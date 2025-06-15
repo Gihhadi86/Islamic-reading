@@ -14,6 +14,7 @@
 <!-- Gambar Iklan di atas header -->
 <div class="header-images">
   <img src="LOGO.png" alt="Logo" class="logo-header">
+  <img src="IKLAN.jpg" alt="Iklan" class="iklan">
 </div>
 
 <nav class="navbar">
@@ -100,6 +101,8 @@
       </div>
     </div>
 
+    
+
     <!-- SLIDE KEDUA -->
     <div class="slider layout-utama slide" id="slide-2" style="display: none;">
       <div class="featured-large">
@@ -171,12 +174,12 @@
 
 
 <section class="slider-horizontal">
-  <div class="slider-header" style="border-bottom: 3px solid #eee; padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
-    <h2 style="color: #e60000; font-size: 24px; font-weight: 700; position: relative;">
+  <div class="slider-header">
+    <h2>
       Haji Umrah
-      <span style="display: block; width: 40px; height: 4px; background-color: #e60000; margin-top: 5px;"></span>
+      <span></span>
     </h2>
-    <div class="slider-nav" style="display: flex; gap: 8px;">
+    <div class="slider-nav">
       <button class="prev-btn">&#10094;</button>
       <button class="next-btn">&#10095;</button>
     </div>
@@ -184,7 +187,7 @@
 
   <div class="slider-container">
     <div class="slider-track">
-      <!-- Artikel 1 -->
+      <!-- Artikel Slide 1 -->
       <div class="article">
         <a href="#">
           <img src="Gambar/Sembelih.png" alt="Sembelih">
@@ -199,7 +202,6 @@
         </a>
       </div>
 
-      <!-- Artikel 2 -->
       <div class="article">
         <a href="#">
           <img src="Gambar/Supposotoria.png" alt="Supposotoria">
@@ -214,7 +216,6 @@
         </a>
       </div>
 
-      <!-- Artikel 3 -->
       <div class="article">
         <a href="#">
           <img src="Gambar/Doaburuk.png" alt="Doa Buruk">
@@ -229,7 +230,6 @@
         </a>
       </div>
 
-      <!-- Artikel 4 -->
       <div class="article">
         <a href="#">
           <img src="Gambar/Cukur.png" alt="Cukur Alis">
@@ -243,11 +243,77 @@
           </div>
         </a>
       </div>
+
+      <!-- Artikel Slide 2 -->
+      <div class="article">
+        <a href="#">
+          <img src="Gambar/Mekah.png" alt="Mekah">
+          <div class="article-content">
+            <div class="meta-info">
+              <span class="date">July 1, 2024</span>
+              <span class="comment-icon">💬 2</span>
+              <span class="hot-icon">🔥 3,400</span>
+            </div>
+            <h3>Panduan Lengkap Ibadah Umrah Bagi Pemula</h3>
+          </div>
+        </a>
+      </div>
+
+      <div class="article">
+        <a href="#">
+          <img src="Gambar/Tawaf.png" alt="Tawaf">
+          <div class="article-content">
+            <div class="meta-info">
+              <span class="date">July 3, 2024</span>
+              <span class="comment-icon">💬 1</span>
+              <span class="hot-icon">🔥 5,123</span>
+            </div>
+            <h3>Langkah-Langkah Tawaf Sesuai Sunnah</h3>
+          </div>
+        </a>
+      </div>
+
+      <div class="article">
+        <a href="#">
+          <img src="Gambar/Sa'i.png" alt="Sa'i">
+          <div class="article-content">
+            <div class="meta-info">
+              <span class="date">July 5, 2024</span>
+              <span class="comment-icon">💬 0</span>
+              <span class="hot-icon">🔥 2,980</span>
+            </div>
+            <h3>Makna dan Hikmah dari Sa'i antara Shafa dan Marwah</h3>
+          </div>
+        </a>
+      </div>
+
+      <div class="article">
+        <a href="#">
+          <img src="Gambar/Mina.png" alt="Mina">
+          <div class="article-content">
+            <div class="meta-info">
+              <span class="date">July 7, 2024</span>
+              <span class="comment-icon">💬 3</span>
+              <span class="hot-icon">🔥 4,321</span>
+            </div>
+            <h3>Sejarah Tempat Bersejarah Mina dan Jamarat</h3>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
-  <div class="slider-dots" style="text-align: center; margin-top: 10px;">
-    <span class="dot active" style="display: inline-block; width: 10px; height: 10px; background: #e60000; border-radius: 50%; margin: 0 4px;"></span>
-    <span class="dot" style="display: inline-block; width: 10px; height: 10px; background: #ddd; border-radius: 50%; margin: 0 4px;"></span>
+
+  <div class="slider-dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+          
+  
   </div>
 </section>
 
@@ -455,63 +521,71 @@
 
 
 
+
+
+
+
+
+
 <!-- JavaScript Tombol -->
+
 <script>
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
-
 function showSlide(index) {
   slides.forEach((slide, i) => {
     slide.style.display = (i === index) ? 'grid' : 'none';
   });
   currentSlide = index;
 }
-
 function nextSlide() {
   let next = (currentSlide + 1) % slides.length;
   showSlide(next);
 }
-
 function prevSlide() {
   let prev = (currentSlide - 1 + slides.length) % slides.length;
   showSlide(prev);
 }
-
-// Inisialisasi slide pertama saat halaman dibuka
 document.addEventListener("DOMContentLoaded", function () {
   showSlide(0);
 });
-
-
-
-
 const sliderTrack = document.querySelector('.slider-track');
+const sliderContainer = document.querySelector('.slider-container');
+const dots = document.querySelectorAll('.dot');
 const prevBtn = document.querySelector('.prev-btn');
 const nextBtn = document.querySelector('.next-btn');
-const dots = document.querySelectorAll('.dot');
-
+const articles = document.querySelectorAll('.article');
 let slideIndex = 0;
-
 nextBtn.addEventListener('click', () => {
-  if (slideIndex < 1) {
+  if (slideIndex < articles.length - 1) {
     slideIndex++;
     updateSlider();
   }
 });
-
 prevBtn.addEventListener('click', () => {
   if (slideIndex > 0) {
     slideIndex--;
     updateSlider();
   }
 });
-
 function updateSlider() {
-  const slideWidth = sliderTrack.clientWidth / 2;
-  sliderTrack.style.transform = `translateX(-${slideWidth * slideIndex}px)`;
-  dots.forEach(dot => dot.style.background = '#ddd');
-  dots[slideIndex].style.background = '#e60000';
+  const slideWidth = articles[0].offsetWidth + 15;
+  sliderContainer.scrollTo({
+    left: slideWidth * slideIndex,
+    behavior: 'smooth'
+  });
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('active', i === slideIndex);
+  });
 }
+sliderContainer.addEventListener('scroll', () => {
+  const index = Math.round(sliderContainer.scrollLeft / articles[0].offsetWidth);
+  slideIndex = index;
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('active', i === index);
+  });
+});
+
 
 
 
