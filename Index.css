@@ -439,6 +439,10 @@
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-left: 6px;
+    margin-right: 6px; /* Tambahan jarak aman kiri-kanan dari tepi website */
   }
 
   .slider-track {
@@ -446,12 +450,12 @@
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     width: max-content;
-    gap: 0;
+    gap: 12px; /* Tambah sedikit jarak antar artikel */
   }
 
   .article {
     flex: 0 0 98vw;
-    max-width: 88vw;
+    max-width: 87vw;
     scroll-snap-align: start;
     border-radius: 0;
     padding: 0 12px;
