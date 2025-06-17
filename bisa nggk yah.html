@@ -327,24 +327,16 @@
 
 
 
-
-
 <section class="section-bulughul">
   <div class="container-bulughul">
     <!-- KIRI -->
     <div class="konten-kiri">
       <div class="box-artikel">
+        <!-- Hanya judul -->
         <h2 class="judul-box">Bulughul Maram</h2>
-        <!-- Tombol Navigasi Geser -->
-<!-- Tombol Navigasi Geser -->
-<div class="slider-nav bulughul-nav">
-  <button class="bulughul-prev">‹</button>
-  <button class="bulughul-next">›</button>
-</div>
 
-
-        <div class="artikel-list">
-        
+        <!-- SLIDER ARTIKEL -->
+        <div class="artikel-list" id="bulughul-slider">
           <!-- Artikel 1 -->
           <div class="artikel-item">
             <a href="Bolehkah Mendoakan Anak Dengan Doa Yang Buruk.html">
@@ -355,22 +347,22 @@
                 <span>🔥 2,798</span>
               </div>
               <h3>Bolehkah Mendoakan Anak Dengan Doa Yang Buruk?</h3>
-              <p>Setiap orang tua pasti menginginkan yang terbaik untuk anaknya, sehingga mereka mengorbankan banyak hal agar anaknya mendapatkan...</p>
+              <p>Setiap orang tua pasti menginginkan yang terbaik untuk anaknya...</p>
               <span class="read-more">Baca Selengkapnya</span>
             </a>
           </div>
 
           <!-- Artikel 2 -->
           <div class="artikel-item">
-            <a href="Bolehkah Menambahkan kata رضي الله عنه (Radhiallahu’ Anhu) Kepada Selain Sahabat.html">
+            <a href="Bolehkah Menambahkan kata رضي الله عنه Kepada Selain Sahabat.html">
               <img src="Gambar/Sahabat.png" alt="Sahabat">
               <div class="meta">
                 <span>🕒 October 28, 2024</span>
                 <span>💬 0</span>
                 <span>🔥 3,216</span>
               </div>
-              <h3>Bolehkah Menambahkan kata رضي الله عنه (Radhiallahu’ Anhu) Kepada Selain Sahabat?</h3>
-              <p>Apakah boleh menyematkan keutamaan ini kepada selain sahabat Nabi ﷺ? Berikut penjelasan ulama...</p>
+              <h3>Bolehkah Menambahkan kata رضي الله عنه Kepada Selain Sahabat?</h3>
+              <p>Apakah boleh menyematkan keutamaan ini kepada selain sahabat Nabi ﷺ?</p>
               <span class="read-more">Baca Selengkapnya</span>
             </a>
           </div>
@@ -385,7 +377,7 @@
                 <span>🔥 4,525</span>
               </div>
               <h3>Bolehkah Mencukur Alis?</h3>
-              <p>Mencukur alis telah menjadi tren kecantikan, tapi bagaimana hukum dalam pandangan Islam? Ini penjelasannya...</p>
+              <p>Mencukur alis telah menjadi tren kecantikan, tapi bagaimana hukumnya?</p>
               <span class="read-more">Baca Selengkapnya</span>
             </a>
           </div>
@@ -407,17 +399,8 @@
         </div>
       </div>
     </div>
-    
   </div>
-  <!-- Titik indikator -->
-<div class="slider-dots" id="bulughul-dots">
-  <span class="dot active"></span>
-  <span class="dot"></span>
-  <span class="dot"></span>
-</div>
-
 </section>
-
 
 
 
@@ -607,84 +590,27 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
-<!-- JavaScript SLIDER BULUGHUL -->
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const section = document.querySelector(".section-bulughul");
-  const list = section.querySelector(".artikel-list");
-  const dots = section.querySelectorAll("#bulughul-dots .dot");
-  const prevBtn = section.querySelector(".bulughul-prev");
-  const nextBtn = section.querySelector(".bulughul-next");
+  const slider = document.getElementById('bulughul-slider');
+  const prevBtn = document.querySelector('.bulughul-prev');
+  const nextBtn = document.querySelector('.bulughul-next');
 
-  if (!list || window.innerWidth > 600) return;
-
-  let index = 0;
-  let itemWidth = 0;
-
-  function updateItemWidth() {
-    const item = list.querySelector(".artikel-item");
-    if (item) {
-      itemWidth = item.getBoundingClientRect().width + 12;
-    }
-  }
-
-  function scrollToIndex() {
-    list.scrollTo({
-      left: index * itemWidth,
-      behavior: "smooth"
+  if (slider && prevBtn && nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      slider.scrollBy({
+        left: slider.clientWidth * 0.9,
+        behavior: 'smooth'
+      });
     });
-    updateDots();
-  }
 
-  function updateDots() {
-    dots.forEach((dot, i) => {
-      dot.classList.toggle("active", i === index);
+    prevBtn.addEventListener('click', () => {
+      slider.scrollBy({
+        left: -slider.clientWidth * 0.9,
+        behavior: 'smooth'
+      });
     });
   }
-
-  prevBtn?.addEventListener("click", () => {
-    if (index > 0) {
-      index--;
-      scrollToIndex();
-    }
-  });
-
-  nextBtn?.addEventListener("click", () => {
-    if (index < dots.length - 1) {
-      index++;
-      scrollToIndex();
-    }
-  });
-
-  list.addEventListener("scroll", () => {
-    const newIndex = Math.round(list.scrollLeft / itemWidth);
-    if (newIndex !== index) {
-      index = newIndex;
-      updateDots();
-    }
-  });
-
-  window.addEventListener("resize", () => {
-    updateItemWidth();
-    scrollToIndex();
-  });
-
-  // Autoplay jika di mobile
-  setInterval(() => {
-    if (window.innerWidth <= 600) {
-      index = (index + 1) % dots.length;
-      scrollToIndex();
-    }
-  }, 6000);
-
-  // Tunggu semua gambar selesai load sebelum scroll awal
-  window.addEventListener("load", () => {
-    updateItemWidth();
-    scrollToIndex();
-  });
-});
 </script>
-
 
 
 
