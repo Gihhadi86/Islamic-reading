@@ -717,24 +717,218 @@
   border-radius: 6px;
 }
 
-/* Responsive Mobile */
-@media (max-width: 768px) {
+
+
+
+/* --- Dasar slider (desktop tetap seperti semula) --- */
+.slider-wrapper {
+  position: relative;
+}
+
+/* Tombol nav, hidden by default */
+.slider-nav {
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.3);
+  color: #fff;
+  font-size: 18px;
+  line-height: 32px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 5;
+  transition: background 0.2s;
+}
+.slider-nav:hover {
+  background: rgba(0,0,0,0.5);
+}
+
+/* desktop: no scroll-snap */
+@media (min-width: 601px) {
+  .artikel-list {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    overflow: visible;
+  }
+}
+
+
+
+
+@media (max-width: 600px) {
+  .section-bulughul {
+    max-width: 90vw;
+    margin: 20px auto;
+    padding: 12px 8px;
+    box-sizing: border-box;
+  }
+
   .container-bulughul {
     flex-direction: column;
   }
 
+  .box-artikel {
+    padding: 0;
+    border: none;
+    box-shadow: none;
+  }
+
+  .slider-wrapper {
+    /* membungkus scrollable */
+  }
+
   .artikel-list {
-    flex-direction: column;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px;
+    padding: 0 12px;
+  }
+
+  .artikel-list::-webkit-scrollbar {
+    display: none;
   }
 
   .artikel-item {
-    flex: 1 1 100%;
+    position: relative;      /* untuk tombol */
+    flex: 0 0 88vw;
+    max-width: 88vw;
+    scroll-snap-align: start;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
   }
 
-    .artikel-item img {
-    height: 200px;
+
+    /* indikator dot tetap tampil */
+  .slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin: 10px 0;
   }
+  .slider-dots .dot {
+    width: 8px;
+    height: 8px;
+    background: #ccc;
+    border-radius: 50%;
+    transition: background 0.3s;
+  }
+  .slider-dots .dot.active {
+    background: #e60000;
+  }
+
+
+  
+
+  .konten-kanan {
+    display: none;
+  }
+
+  .iklan-bawah {
+    display: block;
+    max-width: 94vw;
+    margin: 24px auto;
+    padding: 0 12px;
+  }
+
+  .iklan-bawah img {
+    width: 100%;
+    border-radius: 6px;
+  }
+
+
+  .artikel-item a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+   .artikel-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 6px 6px 0 0;
+  }
+
+  .artikel-item h3 {
+    font-size: 14px;
+    margin: 8px 0 6px;
+    font-weight: 600;
+    color: #222;
+    line-height: 1.4;
+    padding: 0 12px;
+  }
+
+
+
+  .artikel-item p,
+  .read-more {
+    font-size: 12px;
+    padding: 0 16px 12px;
+    color: #555;
+  }
+
+
+
+  .iklan-bawah {
+    display: block;
+    max-width: 94vw;
+    margin: 24px auto;
+    padding: 0 12px;
+  }
+
+  .iklan-bawah img {
+    width: 100%;
+    border-radius: 6px;
+  }
+
+    .meta {
+    font-size: 11px;
+    color: #777;
+    display: flex;
+    gap: 6px;
+    padding: 8px 12px;
+  }
+
+.slider-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding: 0 16px;
 }
+
+.slider-nav button {
+  background-color: #e60000;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.slider-nav button:hover {
+  background-color: #cc0000;
+}
+
+
+}
+
+
+
+
 
 
 
