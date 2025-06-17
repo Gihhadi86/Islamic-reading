@@ -193,7 +193,7 @@
           <img src="Gambar/Sembelih.png" alt="Sembelih">
           <div class="article-content">
             <div class="meta-info">
-              <span class="date">October 24, 2024</span>
+              <span class="date">🕒October 24, 2024</span>
               <span class="comment-icon">💬 0</span>
               <span class="hot-icon">🔥 14,669</span>
             </div>
@@ -207,7 +207,7 @@
           <img src="Gambar/Supposotoria.png" alt="Supposotoria">
           <div class="article-content">
             <div class="meta-info">
-              <span class="date">June 24, 2024</span>
+              <span class="date">🕒June 24, 2024</span>
               <span class="comment-icon">💬 0</span>
               <span class="hot-icon">🔥 8,801</span>
             </div>
@@ -221,7 +221,7 @@
           <img src="Gambar/Doaburuk.png" alt="Doa Buruk">
           <div class="article-content">
             <div class="meta-info">
-              <span class="date">June 14, 2024</span>
+              <span class="date">🕒June 14, 2024</span>
               <span class="comment-icon">💬 0</span>
               <span class="hot-icon">🔥 4,721</span>
             </div>
@@ -235,7 +235,7 @@
           <img src="Gambar/Cukur.png" alt="Cukur Alis">
           <div class="article-content">
             <div class="meta-info">
-              <span class="date">May 30, 2024</span>
+              <span class="date">🕒May 30, 2024</span>
               <span class="comment-icon">💬 0</span>
               <span class="hot-icon">🔥 6,169</span>
             </div>
@@ -250,7 +250,7 @@
           <img src="Gambar/Mekah.png" alt="Mekah">
           <div class="article-content">
             <div class="meta-info">
-              <span class="date">July 1, 2024</span>
+              <span class="date">🕒July 1, 2024</span>
               <span class="comment-icon">💬 2</span>
               <span class="hot-icon">🔥 3,400</span>
             </div>
@@ -264,7 +264,7 @@
           <img src="Gambar/Tawaf.png" alt="Tawaf">
           <div class="article-content">
             <div class="meta-info">
-              <span class="date">July 3, 2024</span>
+              <span class="date">🕒July 3, 2024</span>
               <span class="comment-icon">💬 1</span>
               <span class="hot-icon">🔥 5,123</span>
             </div>
@@ -278,7 +278,7 @@
           <img src="Gambar/Sa'i.png" alt="Sa'i">
           <div class="article-content">
             <div class="meta-info">
-              <span class="date">July 5, 2024</span>
+              <span class="date">🕒July 5, 2024</span>
               <span class="comment-icon">💬 0</span>
               <span class="hot-icon">🔥 2,980</span>
             </div>
@@ -292,7 +292,7 @@
           <img src="Gambar/Mina.png" alt="Mina">
           <div class="article-content">
             <div class="meta-info">
-              <span class="date">July 7, 2024</span>
+              <span class="date">🕒July 7, 2024</span>
               <span class="comment-icon">💬 3</span>
               <span class="hot-icon">🔥 4,321</span>
             </div>
@@ -309,9 +309,7 @@
     <span class="dot"></span>
     <span class="dot"></span>
     <span class="dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
+
           
   
   </div>
@@ -337,7 +335,16 @@
     <div class="konten-kiri">
       <div class="box-artikel">
         <h2 class="judul-box">Bulughul Maram</h2>
+        <!-- Tombol Navigasi Geser -->
+<!-- Tombol Navigasi Geser -->
+<div class="slider-nav bulughul-nav">
+  <button class="bulughul-prev">‹</button>
+  <button class="bulughul-next">›</button>
+</div>
+
+
         <div class="artikel-list">
+        
           <!-- Artikel 1 -->
           <div class="artikel-item">
             <a href="Bolehkah Mendoakan Anak Dengan Doa Yang Buruk.html">
@@ -400,8 +407,21 @@
         </div>
       </div>
     </div>
+    
   </div>
+  <!-- Titik indikator -->
+<div class="slider-dots" id="bulughul-dots">
+  <span class="dot active"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
+
 </section>
+
+
+
+
+
 
 
 
@@ -475,6 +495,9 @@
 
 
 
+<div class="iklan-bawah">
+  <img src="Gambar/Stitma3.png" alt="Iklan Resmi">
+</div>
     
 <!-- Footer -->
 <footer>
@@ -515,20 +538,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- JavaScript Tombol -->
-
+<!-- JavaScript SLIDER UTAMA -->
 <script>
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
@@ -549,46 +559,130 @@ function prevSlide() {
 document.addEventListener("DOMContentLoaded", function () {
   showSlide(0);
 });
-const sliderTrack = document.querySelector('.slider-track');
-const sliderContainer = document.querySelector('.slider-container');
-const dots = document.querySelectorAll('.dot');
-const prevBtn = document.querySelector('.prev-btn');
-const nextBtn = document.querySelector('.next-btn');
-const articles = document.querySelectorAll('.article');
-let slideIndex = 0;
-nextBtn.addEventListener('click', () => {
-  if (slideIndex < articles.length - 1) {
-    slideIndex++;
-    updateSlider();
+</script>
+
+<!-- JavaScript SLIDER HAJI-UMRAH -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const sliderTrack = document.querySelector('.slider-track');
+  const sliderContainer = document.querySelector('.slider-container');
+  const dots = document.querySelectorAll('.slider-horizontal .dot');
+  const prevBtn = document.querySelector('.slider-horizontal .prev-btn');
+  const nextBtn = document.querySelector('.slider-horizontal .next-btn');
+  const articles = document.querySelectorAll('.slider-horizontal .article');
+  let slideIndex = 0;
+
+  function updateSlider() {
+    const slideWidth = articles[0].offsetWidth + 15;
+    sliderContainer.scrollTo({
+      left: slideWidth * slideIndex,
+      behavior: 'smooth'
+    });
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === slideIndex);
+    });
   }
+
+  nextBtn?.addEventListener('click', () => {
+    if (slideIndex < articles.length - 1) {
+      slideIndex++;
+      updateSlider();
+    }
+  });
+
+  prevBtn?.addEventListener('click', () => {
+    if (slideIndex > 0) {
+      slideIndex--;
+      updateSlider();
+    }
+  });
+
+  sliderContainer?.addEventListener('scroll', () => {
+    const index = Math.round(sliderContainer.scrollLeft / articles[0].offsetWidth);
+    slideIndex = index;
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+  });
 });
-prevBtn.addEventListener('click', () => {
-  if (slideIndex > 0) {
-    slideIndex--;
-    updateSlider();
+</script>
+
+<!-- JavaScript SLIDER BULUGHUL -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const section = document.querySelector(".section-bulughul");
+  const list = section.querySelector(".artikel-list");
+  const dots = section.querySelectorAll("#bulughul-dots .dot");
+  const prevBtn = section.querySelector(".bulughul-prev");
+  const nextBtn = section.querySelector(".bulughul-next");
+
+  if (!list || window.innerWidth > 600) return;
+
+  let index = 0;
+  let itemWidth = 0;
+
+  function updateItemWidth() {
+    const item = list.querySelector(".artikel-item");
+    if (item) {
+      itemWidth = item.getBoundingClientRect().width + 12;
+    }
   }
+
+  function scrollToIndex() {
+    list.scrollTo({
+      left: index * itemWidth,
+      behavior: "smooth"
+    });
+    updateDots();
+  }
+
+  function updateDots() {
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === index);
+    });
+  }
+
+  prevBtn?.addEventListener("click", () => {
+    if (index > 0) {
+      index--;
+      scrollToIndex();
+    }
+  });
+
+  nextBtn?.addEventListener("click", () => {
+    if (index < dots.length - 1) {
+      index++;
+      scrollToIndex();
+    }
+  });
+
+  list.addEventListener("scroll", () => {
+    const newIndex = Math.round(list.scrollLeft / itemWidth);
+    if (newIndex !== index) {
+      index = newIndex;
+      updateDots();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    updateItemWidth();
+    scrollToIndex();
+  });
+
+  // Autoplay jika di mobile
+  setInterval(() => {
+    if (window.innerWidth <= 600) {
+      index = (index + 1) % dots.length;
+      scrollToIndex();
+    }
+  }, 6000);
+
+  // Tunggu semua gambar selesai load sebelum scroll awal
+  window.addEventListener("load", () => {
+    updateItemWidth();
+    scrollToIndex();
+  });
 });
-function updateSlider() {
-  const slideWidth = articles[0].offsetWidth + 15;
-  sliderContainer.scrollTo({
-    left: slideWidth * slideIndex,
-    behavior: 'smooth'
-  });
-  dots.forEach((dot, i) => {
-    dot.classList.toggle('active', i === slideIndex);
-  });
-}
-sliderContainer.addEventListener('scroll', () => {
-  const index = Math.round(sliderContainer.scrollLeft / articles[0].offsetWidth);
-  slideIndex = index;
-  dots.forEach((dot, i) => {
-    dot.classList.toggle('active', i === index);
-  });
-});
-
-
-
-
 </script>
 
 
