@@ -763,24 +763,21 @@
 
 @media (max-width: 600px) {
   .section-bulughul {
-    max-width: 90vw;
-    margin: 20px auto;
-    padding: 12px 8px;
-    box-sizing: border-box;
+    max-width: 100vw;
+    overflow: hidden;
+    padding: 16px 0;
+    margin: 0 auto;
   }
 
   .container-bulughul {
     flex-direction: column;
+    padding: 0 12px;
   }
 
   .box-artikel {
     padding: 0;
     border: none;
     box-shadow: none;
-  }
-
-  .slider-wrapper {
-    /* membungkus scrollable */
   }
 
   .artikel-list {
@@ -791,43 +788,79 @@
     -webkit-overflow-scrolling: touch;
     gap: 12px;
     padding: 0 12px;
-  }
-
-  .artikel-list::-webkit-scrollbar {
-    display: none;
+    margin-bottom: 10px;
   }
 
   .artikel-item {
-    position: relative;      /* untuk tombol */
-    flex: 0 0 88vw;
-    max-width: 88vw;
+    flex: 0 0 86vw;
+    max-width: 86vw;
     scroll-snap-align: start;
     background: #fff;
     border-radius: 6px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-    display: flex;
-    flex-direction: column;
   }
 
+  .artikel-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 6px 6px 0 0;
+  }
 
-    /* indikator dot tetap tampil */
+  .artikel-item h3 {
+    font-size: 14px;
+    margin: 8px 0 6px;
+    font-weight: 600;
+    color: #222;
+    line-height: 1.4;
+    padding: 0 12px;
+  }
+
+  .artikel-item p,
+  .read-more {
+    font-size: 12px;
+    padding: 0 16px 12px;
+    color: #555;
+  }
+
+  .bulughul-nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 12px;
+  }
+
+  .bulughul-nav button {
+    background-color: #e60000;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .bulughul-nav button:hover {
+    background-color: #cc0000;
+  }
+
   .slider-dots {
     display: flex;
     justify-content: center;
     gap: 6px;
-    margin: 10px 0;
+    margin: 12px 0;
   }
+
   .slider-dots .dot {
     width: 8px;
     height: 8px;
     background: #ccc;
     border-radius: 50%;
-    transition: background 0.3s;
   }
+
   .slider-dots .dot.active {
     background: #e60000;
   }
-
 
   
 
@@ -854,12 +887,7 @@
     color: inherit;
   }
 
-   .artikel-item img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 6px 6px 0 0;
-  }
+
 
   .artikel-item h3 {
     font-size: 14px;
@@ -888,10 +916,6 @@
     padding: 0 12px;
   }
 
-  .iklan-bawah img {
-    width: 100%;
-    border-radius: 6px;
-  }
 
     .meta {
     font-size: 11px;
