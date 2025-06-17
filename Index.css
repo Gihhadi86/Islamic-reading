@@ -643,7 +643,7 @@
 
 .artikel-item img {
   width: 100%;
-  height: 180px; /* Atur tinggi gambar agar konsisten */
+  height: 180px;
   object-fit: cover;
   border-radius: 5px;
 }
@@ -678,7 +678,6 @@
   margin-top: 5px;
 }
 
-/* KANAN */
 .konten-kanan {
   flex: 1;
 }
@@ -717,61 +716,23 @@
   border-radius: 6px;
 }
 
-
-
-
-/* --- Dasar slider (desktop tetap seperti semula) --- */
-.slider-wrapper {
-  position: relative;
-}
-
-/* Tombol nav, hidden by default */
-.slider-nav {
-  display: none;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 32px;
-  height: 32px;
-  border: none;
-  border-radius: 50%;
-  background: rgba(0,0,0,0.3);
-  color: #fff;
-  font-size: 18px;
-  line-height: 32px;
-  text-align: center;
-  cursor: pointer;
-  z-index: 5;
-  transition: background 0.2s;
-}
-.slider-nav:hover {
-  background: rgba(0,0,0,0.5);
-}
-
-/* desktop: no scroll-snap */
-@media (min-width: 601px) {
-  .artikel-list {
-    display: flex;
-    gap: 25px;
-    flex-wrap: wrap;
-    overflow: visible;
-  }
-}
-
-
-
-
+/* RESPONSIVE */
 @media (max-width: 600px) {
   .section-bulughul {
-    max-width: 100vw;
-    overflow: hidden;
-    padding: 16px 0;
-    margin: 0 auto;
+    max-width: 90vw;
+    margin: 20px auto;
+    padding: 12px 8px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+    box-sizing: border-box;
   }
 
   .container-bulughul {
     flex-direction: column;
-    padding: 0 12px;
+    gap: 0;
+    max-width: 100%;
   }
 
   .box-artikel {
@@ -788,16 +749,24 @@
     -webkit-overflow-scrolling: touch;
     gap: 12px;
     padding: 0 12px;
-    margin-bottom: 10px;
   }
 
   .artikel-item {
-    flex: 0 0 86vw;
-    max-width: 86vw;
+    flex: 0 0 88vw;
+    max-width: 88vw;
     scroll-snap-align: start;
     background: #fff;
     border-radius: 6px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .artikel-item a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
   }
 
   .artikel-item img {
@@ -816,53 +785,31 @@
     padding: 0 12px;
   }
 
-  .artikel-item p,
+  .artikel-item p {
+    font-size: 13px;
+    color: #444;
+    padding: 0 12px;
+    margin-bottom: 6px;
+  }
+
   .read-more {
     font-size: 12px;
-    padding: 0 16px 12px;
-    color: #555;
+    color: #0066ff;
+    padding: 0 12px 12px;
+    display: inline-block;
   }
 
-  .bulughul-nav {
+  .meta {
+    font-size: 11px;
+    color: #777;
     display: flex;
-    justify-content: space-between;
-    margin: 10px 12px;
-  }
-
-  .bulughul-nav button {
-    background-color: #e60000;
-    color: #fff;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-
-  .bulughul-nav button:hover {
-    background-color: #cc0000;
-  }
-
-  .slider-dots {
-    display: flex;
-    justify-content: center;
     gap: 6px;
-    margin: 12px 0;
+    padding: 8px 12px;
   }
 
-  .slider-dots .dot {
-    width: 8px;
-    height: 8px;
-    background: #ccc;
-    border-radius: 50%;
+  .artikel-list::-webkit-scrollbar {
+    display: none; /* sembunyikan scrollbar */
   }
-
-  .slider-dots .dot.active {
-    background: #e60000;
-  }
-
-  
 
   .konten-kanan {
     display: none;
@@ -879,83 +826,7 @@
     width: 100%;
     border-radius: 6px;
   }
-
-
-  .artikel-item a {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-  }
-
-
-
-  .artikel-item h3 {
-    font-size: 14px;
-    margin: 8px 0 6px;
-    font-weight: 600;
-    color: #222;
-    line-height: 1.4;
-    padding: 0 12px;
-  }
-
-
-
-  .artikel-item p,
-  .read-more {
-    font-size: 12px;
-    padding: 0 16px 12px;
-    color: #555;
-  }
-
-
-
-  .iklan-bawah {
-    display: block;
-    max-width: 94vw;
-    margin: 24px auto;
-    padding: 0 12px;
-  }
-
-
-    .meta {
-    font-size: 11px;
-    color: #777;
-    display: flex;
-    gap: 6px;
-    padding: 8px 12px;
-  }
-
-.slider-nav {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 8px;
-  padding: 0 16px;
 }
-
-.slider-nav button {
-  background-color: #e60000;
-  color: #fff;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-size: 18px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.slider-nav button:hover {
-  background-color: #cc0000;
-}
-
-
-}
-
-
-
-
-
-
-
 
 
 
