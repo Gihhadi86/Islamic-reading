@@ -620,19 +620,6 @@
   padding-bottom: 5px;
 }
 
-.artikel-list {
-  display: flex;
-  gap: 25px;
-  flex-wrap: wrap;
-}
-
-.artikel-item {
-  background: #fafafa;
-  border-radius: 6px;
-  overflow: hidden;
-  flex: 1 1 30%;
-  transition: 0.3s;
-}
 
 .artikel-item a {
   text-decoration: none;
@@ -715,18 +702,45 @@
   width: 100%;
   border-radius: 6px;
 }
+/* DESKTOP */
+.artikel-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+}
 
-/* RESPONSIVE */
+.artikel-item {
+  background: #fafafa;
+  border-radius: 6px;
+  overflow: hidden;
+  flex: 1 1 30%;
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+}
 @media (max-width: 600px) {
   .section-bulughul {
     max-width: 90vw;
     margin: 20px auto;
-    padding: 12px 8px;
+    padding: 16px 12px;
     background-color: #fff;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
     box-sizing: border-box;
+    position: relative;
+  }
+
+  /* GARIS KANAN PEMBATAS */
+  .section-bulughul::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background-color: #e0e0e0;
+    border-radius: 2px;
   }
 
   .container-bulughul {
@@ -741,13 +755,14 @@
     box-shadow: none;
   }
 
-@media (max-width: 600px) {
   .artikel-list {
     display: flex;
+    flex-wrap: nowrap;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    gap: 0;
   }
 
   .artikel-item {
@@ -759,53 +774,60 @@
     border-radius: 6px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
     overflow: hidden;
-    margin-right: 0; /* hindari celah antar artikel */
+    display: flex;
+    flex-direction: column;
+    margin-right: 0;
   }
 
-  .artikel-list::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Styling isi artikel */
   .artikel-item a {
     display: block;
-    padding: 10px;
+    padding: 0;
     text-decoration: none;
     color: inherit;
   }
 
   .artikel-item img {
     width: 100%;
-    height: 180px;
+    height: auto;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
     border-radius: 6px 6px 0 0;
-  }
-
-  .artikel-item h3 {
-    font-size: 16px;
-    font-weight: bold;
-    margin: 8px 0 6px;
-    padding: 0 12px;
-  }
-
-  .artikel-item p,
-  .read-more {
-    font-size: 13px;
-    padding: 0 12px 12px;
+    display: block;
   }
 
   .meta {
     font-size: 11px;
     color: #777;
     display: flex;
-    gap: 6px;
+    gap: 8px;
     padding: 8px 12px;
+    align-items: center;
   }
-}
 
+  .artikel-item h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 6px 0;
+    padding: 0 12px;
+    line-height: 1.4;
+  }
+
+  .artikel-item p {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.5;
+    padding: 0 12px 6px;
+  }
+
+  .read-more {
+    font-size: 13px;
+    color: #007bff;
+    padding: 0 12px 12px;
+    display: inline-block;
+  }
 
   .artikel-list::-webkit-scrollbar {
-    display: none; /* sembunyikan scrollbar */
+    display: none;
   }
 
   .konten-kanan {
