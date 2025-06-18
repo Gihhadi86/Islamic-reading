@@ -722,7 +722,7 @@
 @media (max-width: 600px) {
   .section-bulughul {
     width: 100%;
-    max-width: 100vw;
+    max-width: 94vw;
     margin: 24px auto;
     padding: 16px 12px;
     background-color: #fff;
@@ -730,8 +730,22 @@
     border-radius: 10px;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
     box-sizing: border-box;
-    overflow: hidden;
+    position: relative;
   }
+
+  /* Garis pembatas kiri & kanan */
+  .section-bulughul::before,
+  .section-bulughul::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: #e0e0e0;
+  }
+
+  .section-bulughul::before { left: 0; }
+  .section-bulughul::after { right: 0; }
 
   .container-bulughul {
     display: flex;
@@ -740,14 +754,20 @@
     box-sizing: border-box;
   }
 
+  .box-artikel {
+    padding: 0;
+    border: none;
+    box-shadow: none;
+  }
+
   .artikel-list {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
     gap: 12px;
     padding: 0 12px;
     box-sizing: border-box;
@@ -755,8 +775,8 @@
   }
 
   .artikel-item {
-    flex: 0 0 88vw;
-    max-width: 88vw;
+    flex: 0 0 85vw;
+    max-width: 85vw;
     scroll-snap-align: start;
     background: #fff;
     border-radius: 10px;
@@ -764,15 +784,6 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    box-sizing: border-box;
-  }
-
-  .artikel-item a {
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    color: inherit;
-    height: 100%;
   }
 
   .artikel-item img {
@@ -784,33 +795,39 @@
     display: block;
   }
 
+  .artikel-item a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+  }
+
   .meta {
     font-size: 11px;
     color: #777;
     display: flex;
-    gap: 8px;
-    padding: 10px 14px 0;
+    gap: 6px;
+    padding: 8px 12px 0;
   }
 
   .artikel-item h3 {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
-    margin: 6px 0;
-    padding: 0 14px;
+    padding: 6px 12px 0;
     line-height: 1.4;
   }
 
   .artikel-item p {
     font-size: 13px;
     color: #555;
-    line-height: 1.5;
-    padding: 0 14px 6px;
+    padding: 4px 12px 10px;
   }
 
   .read-more {
     font-size: 13px;
     color: #007bff;
-    padding: 0 14px 14px;
+    padding: 0 12px 14px;
     display: inline-block;
   }
 
@@ -836,9 +853,10 @@
   }
 }
 
+/* Pastikan ini di luar media query */
 html, body {
-  overflow-x: hidden;
   max-width: 100vw;
+  overflow-x: hidden;
 }
 
 
