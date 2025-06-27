@@ -953,216 +953,357 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-.section-artikel5 {
-  margin: 0 auto;
-  max-width: 1300px;
-  padding: 24px;
-  display: flex;
-  justify-content: flex-start; /* align to left */
+/* --- Bagian Artikel 6 (Harta Haram Muamalat Kontemporer) --- */
+.section-artikel6 {
+    margin: 20px auto;
+    max-width: 1300px;
+    padding: 24px;
+    display: flex;
+    justify-content: flex-start;
 }
 
-.artikel5-wrapper {
-  max-width: 870px; /* <== agar tidak melebar sampai kanan */
-  min-width: 750px;
-  width: 100%;
+.artikel6-wrapper {
+    max-width: 870px; /* Lebar total wrapper, sama seperti artikel5 */
+    width: 100%;
+    padding: 24px 30px;
+    border: 1px solid #e0e0e0;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0,0,0,0.05);
 }
 
-.artikel5-kiri {
-  padding: 24px 30px;
-  border: 1px solid #ddd;
-  background-color: #fff;
-  box-shadow: 0 0 5px rgba(0,0,0,0.05);
+/* Header Artikel 6 */
+.artikel6-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e60000;
+    padding-bottom: 8px;
 }
 
-.artikel5-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+.artikel6-judul {
+    font-size: 22px;
+    font-weight: bold;
+    color: #e60000;
+    margin: 0;
 }
 
-.artikel5-judul {
-  font-size: 22px;
-  font-weight: bold;
-  color: #0066ff;
-  border-bottom: 2px solid #0066ff;
-  padding-bottom: 5px;
+.artikel6-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.artikel5-btn {
-  background-color: #0066ff;
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 13px;
+.artikel6-nav span {
+    font-size: 14px;
+    color: #555;
+    font-weight: 600;
 }
 
-.artikel5-btn:hover {
-  background-color: #0051cc;
+.artikel6-arrow-btn {
+    background-color: #eee;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+    color: #333;
 }
 
-.artikel5-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+.artikel6-arrow-btn:hover {
+    background-color: #ccc;
 }
 
-.artikel5-item {
-  background-color: #fff;
-  border-radius: 6px;
-  overflow: hidden;
-  transition: 0.3s ease;
-  box-shadow: 0 0 5px rgba(0,0,0,0.05);
-  flex: 0 0 calc(33.333% - 13.33px);
-  max-width: calc(33.333% - 13.33px);
-  display: flex;
-  flex-direction: column;
+/* --- Konten Grid Utama Artikel 6 (Artikel Kiri + Artikel Kanan) --- */
+.artikel6-content-grid {
+    display: flex;
+    gap: 20px; /* Jarak antar kolom */
+    align-items: flex-start;
 }
 
-.artikel5-item a {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  height: 100%;
+/* --- Artikel Kiri (Featured Large) --- */
+.artikel6-featured-large {
+    flex-shrink: 0;
+    width: 360px; /* Lebar DITAMBAH DIKIT (dari 340px) */
+    height: 540px; /* Tinggi DIKURANGI DIKIT (dari 580px) */
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.artikel5-item img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 5px;
+.artikel6-featured-large img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
-.artikel5-meta {
-  font-size: 12px;
-  color: #777;
-  margin: 10px 0;
-  display: flex;
-  gap: 10px;
-  padding: 0 10px;
+.artikel6-overlay {
+    position: absolute;
+    bottom: 0;
+    padding: 24px;
+    background: linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0));
+    color: white;
+    width: 100%;
 }
 
-.artikel5-item h3 {
-  font-size: 15px;
-  font-weight: bold;
-  margin: 5px 10px 8px;
-  color: #222;
+.artikel6-category {
+    background: #e60000;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 10px;
 }
 
-.artikel5-item p {
-  font-size: 13px;
-  color: #555;
-  line-height: 1.5;
-  margin: 0 10px 10px;
+.artikel6-time {
+    font-size: 13px;
+    opacity: 0.9;
+    margin-bottom: 5px;
+    display: block;
+    color: #ccc;
 }
 
-.artikel5-more {
-  font-size: 13px;
-  color: #007bff;
-  display: inline-block;
-  margin: 0 10px 12px;
+.artikel6-title {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.3;
+    margin-top: 10px;
 }
 
-.artikel5-nav {
-  display: flex;
-  gap: 8px;
+.artikel6-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    margin-top: 15px;
+    color: #ddd;
 }
 
-.arrow-btn {
-  background-color: #eee;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s;
+.artikel6-author {
+    font-weight: 600;
 }
 
-.arrow-btn:hover {
-  background-color: #ccc;
+.artikel6-date-small {
+    /* display: none; */
 }
 
-.artikel5-slider {
-  position: relative;
+.artikel6-views {
+    color: #e60000;
+    font-weight: bold;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.artikel6-views i {
+    font-size: 16px;
 }
 
-.artikel5-slide {
-  display: none;
-  flex-wrap: wrap;
-  gap: 20px;
-}
 
-.artikel5-slide.active {
-  display: flex;
-}
-
-.artikel5-dots {
-  text-align: center;
-  margin-top: 15px;
-}
-
-.artikel5-dots .dot {
-  height: 10px;
-  width: 10px;
-  margin: 0 5px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.artikel5-dots .dot.active {
-  background-color: #0066ff;
-}
-
-/* Tablet (768px–1024px): 2 artikel sejajar per slide */
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-  .artikel5-slide {
-    display: flex !important;
-    flex-wrap: nowrap;
-    gap: 20px;
-    justify-content: center;
-  }
-  .artikel5-item {
-    flex: 0 0 calc(50% - 10px);
-    max-width: calc(50% - 10px);
-  }
-}
-
-/* HP: 1 artikel per slide */
-@media screen and (max-width: 767px) {
-  .artikel5-slide {
+/* --- Artikel Kanan (Vertical List of 5 articles) --- */
+.artikel6-vertical-list {
+    flex-grow: 1;
+    display: flex;
     flex-direction: column;
-  }
-  .artikel5-item {
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
+    gap: 15px;
+}
+
+.artikel6-item-small {
+    /* Ini adalah container untuk <a> */
+    display: block; /* Agar <a> di dalamnya bisa mengambil seluruh ruang */
+    text-decoration: none; /* Hapus underline default dari link */
+    color: inherit; /* Warisi warna teks dari parent */
+    /* Efek hover untuk seluruh artikel kecil */
+    transition: background-color 0.3s ease;
+}
+/* Efek hover untuk seluruh artikel kecil (latar belakang berubah) */
+.artikel6-item-small:hover {
+    background-color: #f0f0f0; /* Warna latar belakang sedikit berubah saat hover */
+    cursor: pointer;
+}
+
+/* TARGET PENTING: Terapkan flexbox ke <a> di dalam artikel6-item-small */
+/* Ini yang akan menata gambar dan info secara berdampingan */
+.artikel6-item-small > a { 
+    display: flex !important; /* Paksa display flex */
+    flex-direction: row !important; /* Paksa arah baris */
+    align-items: flex-start !important; /* Paksa rata atas */
+    flex-wrap: nowrap !important; /* Paksa tidak membungkus */
+    width: 100%; /* Penting agar <a> mengisi seluruh lebar */
+    gap: 10px; /* Jarak antara gambar dan info */
+    padding-right: 5px; /* Tambahkan sedikit padding kanan jika teks terlalu mepet tepi */
 }
 
 
+/* Border bawah dan padding untuk setiap item, pindahkan ke artikel6-item-small itu sendiri */
+/* (Atau biarkan di sini jika ingin hanya <a> yang punya padding) */
+/* Saya taruh di parent artikel6-item-small agar border tidak ikut hover latar belakang */
+.artikel6-vertical-list > .artikel6-item-small {
+    border-bottom: 1px dashed #eee;
+    padding-bottom: 15px;
+}
+.artikel6-vertical-list > .artikel6-item-small:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
 
 
+.artikel6-item-img {
+    flex-shrink: 0 !important;
+    width: 90px !important; /* Gambar kecil DIBESARKAN */
+    height: 90px !important; /* Gambar kecil DIBESARKAN */
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.artikel6-item-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.artikel6-item-info {
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    min-width: 0 !important;
+    justify-content: center !important; /* Pusatkan teks vertikal di dalam info */
+}
+
+.artikel6-item-time {
+    font-size: 14px !important;
+    color: #999;
+    margin-bottom: 2px !important;
+}
+
+.artikel6-item-title {
+    font-size: 18px !important; /* Ukuran font judul DIBESARKAN */
+    font-weight: 600;
+    color: #333; /* Warna default */
+    line-height: 1.3;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important; /* Batasi hingga 2 baris */
+    -webkit-box-orient: vertical !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    /* Transisi untuk efek hover pada judul */
+    transition: color 0.3s ease;
+}
+
+/* Efek hover pada judul (h3) di dalam artikel kecil */
+.artikel6-item-small a:hover .artikel6-item-title {
+    color: #007bff; /* Hijau kebiruan */
+}
 
 
+/* --- Responsif --- */
 
+/* Responsif untuk Mobile (lebar <= 767px) */
+@media screen and (max-width: 767px) {
+    .section-artikel6 {
+        padding: 16px;
+    }
 
+    .artikel6-wrapper {
+        padding: 16px 20px;
+        max-width: 100%;
+    }
 
+    .artikel6-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .artikel6-nav {
+        align-self: flex-end;
+    }
+
+    .artikel6-judul {
+        font-size: 18px;
+    }
+
+    .artikel6-content-grid {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .artikel6-featured-large {
+        width: 100%;
+        height: 250px;
+    }
+
+    .artikel6-title {
+        font-size: 20px;
+    }
+
+    .artikel6-overlay {
+        padding: 15px;
+    }
+
+    .artikel6-category,
+    .artikel6-time,
+    .artikel6-meta {
+        font-size: 12px;
+    }
+
+    .artikel6-item-small a { /* Terapkan flexbox ke <a> di mobile */
+        flex-direction: row;
+        align-items: center; /* Kembali ke center untuk mobile agar rapi */
+        gap: 8px;
+        flex-wrap: wrap; /* Izinkan wrapping jika terlalu sempit di mobile */
+    }
+
+    .artikel6-item-img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .artikel6-item-time {
+        font-size: 11px;
+    }
+
+    .artikel6-item-title {
+        font-size: 14px;
+        -webkit-line-clamp: 3;
+    }
+}
+
+/* Responsif untuk Tablet (antara 768px dan 1024px) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .section-artikel6 {
+        padding: 20px;
+    }
+    .artikel6-wrapper {
+        min-width: auto;
+        max-width: 100%;
+    }
+    .artikel6-content-grid {
+        flex-direction: row;
+    }
+    .artikel6-featured-large {
+        flex-shrink: 0;
+        width: 280px;
+        height: 350px;
+    }
+
+    .artikel6-item-small a { /* Terapkan flexbox ke <a> di tablet */
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 10px;
+        flex-wrap: nowrap;
+    }
+
+    .artikel6-item-img {
+        width: 80px;
+        height: 80px;
+    }
+}
 
 
 
