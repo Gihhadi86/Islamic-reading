@@ -8,7 +8,7 @@
     // Data artikel untuk slider Tadabur Ayat
     const artikelData = [
         {
-            img: "Gambar/cukur.png",
+            img: "Gambar/Benar.png",
             date: "June 15, 2025",
             comments: "1",
             views: "1,000",
