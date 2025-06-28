@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         { // Artikel 4 (akan tampil di halaman 2, di bawah artikel 3)
             pageTitle: "Faedah Dari Imam Ibnul Qayyim",
-            img: "https://via.placeholder.com/800x450/FFC107/FFFFFF?text=Artikel+Selanjutnya+2", // Contoh gambar lain
+            img: "Gambar/Benar.png", // Contoh gambar lain
             author: "Penulis B",
             date: "November 15, 2024",
             comments: "2",
@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         { // Artikel 5 (akan tampil di halaman 3)
             pageTitle: "Faedah Dari Imam Ibnul Qayyim",
-            img: "https://via.placeholder.com/800x450/9C27B0/FFFFFF?text=Artikel+Selanjutnya+3",
+            img: "Gambar/Tidur.png",
             author: "Penulis C",
             date: "November 20, 2024",
             comments: "8",
