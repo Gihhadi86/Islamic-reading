@@ -953,11 +953,18 @@
 
 
 
+
+
+
+
+
+
 /* --- Bagian Artikel 6 (Harta Haram Muamalat Kontemporer) --- */
 .section-artikel6 {
-    margin: 20px auto;
+    margin: 25px auto;
     max-width: 1300px;
     padding: 24px;
+    margin-top: 3px;
     display: flex;
     justify-content: flex-start;
 }
@@ -973,39 +980,45 @@
 
 /* Header Artikel 6 */
 .artikel6-header {
+    /* Gunakan relative positioning sebagai acuan untuk nav */
+    position: relative; /* Tambahkan ini */
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    /* Untuk desktop, ini tetap di samping kanan judul karena flexbox */
+    justify-content: space-between; 
+    align-items: center; 
     margin-bottom: 20px;
-    border-bottom: 2px solid #e60000;
+    border-bottom: 2px solid #00fc04;
     padding-bottom: 8px;
 }
 
 .artikel6-judul {
     font-size: 22px;
     font-weight: bold;
-    color: #e60000;
+    color: #05ff09;
     margin: 0;
+    /* Tambahkan max-width agar judul tidak terlalu panjang dan memberi ruang tombol */
+    max-width: calc(100% - 100px); /* Sesuaikan 100px ini sesuai perkiraan lebar tombol + margin */
 }
 
 .artikel6-nav {
+    /* Untuk desktop, ini tetap di samping kanan judul karena flexbox */
     display: flex;
     align-items: center;
     gap: 8px;
-}
-
-.artikel6-nav span {
-    font-size: 14px;
-    color: #555;
-    font-weight: 600;
+    /* Hapus position: absolute; top:0; right:0; untuk desktop agar tetap dalam aliran flexbox normal */
+    position: static; /* Kembali ke posisi normal dalam flexbox untuk desktop */
+    top: auto; /* Pastikan tidak ada top/right yang tersisa dari mobile jika ada transisi */
+    right: auto;
 }
 
 .artikel6-arrow-btn {
     background-color: #eee;
     border: none;
-    padding: 6px 10px;
+    /* PERUBAHAN DI SINI: Kurangi padding dan font-size */
+    padding: 2px 4px;   /* Dikecilkan dari 6px 10px menjadi 4px 6px */
+    font-size: 10px;    /* Dikecilkan dari 16px menjadi 14px (atau sesuaikan lagi jika ingin lebih kecil) */
+    
     border-radius: 4px;
-    font-size: 16px;
     cursor: pointer;
     transition: background 0.3s;
     color: #333;
@@ -1050,7 +1063,7 @@
 }
 
 .artikel6-category {
-    background: #e60000;
+    background: #16ff01;
     padding: 5px 10px;
     border-radius: 5px;
     font-size: 13px;
@@ -1092,7 +1105,7 @@
 }
 
 .artikel6-views {
-    color: #e60000;
+    color: #adadad;
     font-weight: bold;
     margin-left: auto;
     display: flex;
@@ -1113,12 +1126,11 @@
 }
 
 .artikel6-item-small {
-    /* Ini adalah container untuk <a> */
     display: block; /* Agar <a> di dalamnya bisa mengambil seluruh ruang */
     text-decoration: none; /* Hapus underline default dari link */
     color: inherit; /* Warisi warna teks dari parent */
     /* Efek hover untuk seluruh artikel kecil */
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease; 
 }
 /* Efek hover untuk seluruh artikel kecil (latar belakang berubah) */
 .artikel6-item-small:hover {
@@ -1140,8 +1152,6 @@
 
 
 /* Border bawah dan padding untuk setiap item, pindahkan ke artikel6-item-small itu sendiri */
-/* (Atau biarkan di sini jika ingin hanya <a> yang punya padding) */
-/* Saya taruh di parent artikel6-item-small agar border tidak ikut hover latar belakang */
 .artikel6-vertical-list > .artikel6-item-small {
     border-bottom: 1px dashed #eee;
     padding-bottom: 15px;
@@ -1181,7 +1191,7 @@
 }
 
 .artikel6-item-title {
-    font-size: 18px !important; /* Ukuran font judul DIBESARKAN */
+    font-size: 17px !important; /* Ukuran font judul DIBESARKAN */
     font-weight: 600;
     color: #333; /* Warna default */
     line-height: 1.3;
@@ -1215,17 +1225,23 @@
     }
 
     .artikel6-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-
-    .artikel6-nav {
-        align-self: flex-end;
+        flex-direction: column; /* Ubah header menjadi kolom */
+        align-items: flex-start; /* Judul di kiri atas */
+        gap: 0; /* Hapus gap antar judul dan nav jika jadi kolom */
+        margin-bottom: 15px; /* Sesuaikan margin bawah */
     }
 
     .artikel6-judul {
         font-size: 18px;
+        max-width: 100%; /* Judul bisa mengambil lebih banyak ruang di mobile */
+    }
+    
+    .artikel6-nav {
+        position: absolute; /* Posisikan tombol absolut di pojok kanan atas dari header */
+        top: 0;
+        right: 0;
+        /* Untuk memastikan tombol tidak terlalu jauh dari judul jika judul sangat panjang */
+        align-self: auto; /* Hapus align-self dari flexbox parent */
     }
 
     .artikel6-content-grid {
@@ -1303,126 +1319,6 @@
         width: 80px;
         height: 80px;
     }
-}
-
-
-
-
-
-
-/* Footer Umum */
-footer {
-  background-color: #1c1c1c;
-  color: #f0f0f0;
-  font-family: 'Segoe UI', sans-serif;
-  padding: 40px 20px 20px;
-  font-size: 15px;
-}
-
-.footer-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-  gap: 30px;
-}
-
-.footer-section {
-  flex: 1 1 250px;
-  min-width: 200px;
-}
-
-.footer-logo {
-  width: 140px;
-  margin-bottom: 15px;
-}
-
-.footer-section h3 {
-  font-size: 18px;
-  color: #ffffff;
-  margin-bottom: 15px;
-  font-weight: bold;
-}
-
-/* Social Links */
-.social-links {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.social-links li {
-  margin: 5px 0;
-}
-
-.social-links a {
-  display: inline-block;
-  padding: 10px;
-  background-color: #333;
-  border-radius: 6px;
-  color: #f0f0f0;
-  text-decoration: none;
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-.social-links a:hover {
-  background-color: #555;
-  transform: translateY(-2px);
-  color: #007BFF;
-}
-
-/* Footer Bottom */
-.footer-bottom {
-  border-top: 1px solid #333;
-  margin-top: 40px;
-  padding-top: 20px;
-  text-align: center;
-  font-size: 14px;
-}
-
-.footer-bottom p {
-  margin-bottom: 10px;
-}
-
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  padding: 0;
-  list-style: none;
-  margin: 0;
-}
-
-.footer-links a {
-  color: #ccc;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.footer-links a:hover {
-  color: #ffffff;
-}
-
-/* Responsif */
-@media screen and (max-width: 768px) {
-  .footer-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .footer-section {
-    margin-bottom: 30px;
-  }
-
-  .social-links {
-    justify-content: center;
-  }
 }
 
 
@@ -1515,6 +1411,706 @@ footer {
   margin-top: 10px;
   text-decoration: none;
 }
+
+
+
+
+
+
+
+/* --- Wrapper untuk Artikel 7 dan 8 (sejajar) --- */
+.artikel7-8-container-wrapper {
+    margin: 20px auto; /* Margin atas bawah */
+    max-width: 1300px; /* Lebar maksimal keseluruhan area konten */
+    padding: 0 24px; /* Padding samping */
+    display: flex;
+    justify-content: flex-start; /* Sejajar kiri karena ada iklan di kanan */
+    gap: 24px; /* Jarak antara container artikel 7 dan 8 */
+    box-sizing: border-box; /* Pastikan padding dihitung dalam lebar */
+}
+
+/* --- Base styling untuk kedua section (artikel 7 dan artikel 8) --- */
+.section-artikel7,
+.section-artikel8 {
+    flex-grow: 1; /* Biarkan mereka tumbuh mengisi ruang yang tersedia */
+    flex-shrink: 1; /* Biarkan mereka menyusut jika ruang sempit */
+    max-width: calc((870px - 24px) / 2); /* Mengambil setengah dari lebar area konten utama dikurangi gap */
+    width: 100%; /* Agar responsif */
+    box-sizing: border-box;
+}
+
+/* Base styling untuk wrapper di dalam section */
+.artikel7-wrapper,
+.artikel8-wrapper {
+    padding: 24px 30px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0,0,0,0.05);
+    box-sizing: border-box;
+    height: 100%; /* Pastikan wrapper mengisi tinggi section */
+}
+
+/* --- Header untuk Artikel 7 dan 8 --- */
+.artikel7-header,
+.artikel8-header {
+    position: relative; /* Sebagai acuan untuk tombol nav absolut */
+    display: flex;
+    justify-content: space-between; /* Untuk desktop: judul kiri, nav kanan */
+    align-items: center; /* Sejajar vertikal untuk desktop */
+    margin-bottom: 20px;
+    border-bottom: 2px solid #0066ff; /* Warna biru untuk border judul */
+    padding-bottom: 8px;
+}
+
+.artikel7-judul,
+.artikel8-judul {
+    font-size: 22px;
+    font-weight: bold;
+    color: #0066ff; /* Warna biru untuk judul */
+    margin: 0;
+    max-width: calc(100% - 100px); /* Beri ruang untuk tombol nav */
+}
+
+.artikel7-nav,
+.artikel8-nav {
+    display: flex;
+    gap: 8px;
+    position: static; /* Untuk desktop, ini tetap dalam aliran normal */
+}
+
+.artikel7-arrow-btn,
+.artikel8-arrow-btn {
+    background-color: #eee;
+    border: none;
+    padding: 4px 6px; /* Ukuran tombol kecil */
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s;
+    color: #333;
+}
+
+.artikel7-arrow-btn:hover,
+.artikel8-arrow-btn:hover {
+    background-color: #ccc;
+}
+
+/* --- Layout Konten Utama (Artikel Besar + Artikel Kecil) --- */
+.artikel7-main-content,
+.artikel8-main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Jarak antara artikel besar dan daftar artikel kecil */
+}
+
+/* --- Artikel Besar Pertama --- */
+.artikel7-item-large,
+.artikel8-item-large {
+    /* Hapus position: relative di sini, kita pindahkan ke <a> di dalamnya */
+    /* overflow: hidden tetap penting */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 6px;
+    overflow: hidden; 
+    padding-bottom: 15px; /* Padding bawah untuk konten teks */
+}
+
+/* PENTING: Set position: relative pada <a> yang membungkus gambar dan label */
+.artikel7-item-large > a,
+.artikel8-item-large > a {
+    display: block; /* Agar link membungkus gambar dan label */
+    position: relative; /* INI YANG AKAN MENJADI ACUAN UNTUK LABEL ABSOLUT */
+    overflow: hidden; /* Pastikan label tidak keluar dari <a> */
+}
+
+.artikel7-item-large img,
+.artikel8-item-large img {
+    width: 100%;
+    height: 180px; /* Tinggi gambar besar, sesuaikan jika ingin lebih tinggi */
+    object-fit: cover;
+    display: block;
+}
+
+/* KOREKSI DI SINI: Tempatkan label kategori di pojok kanan bawah gambar */
+.artikel7-label-on-image,
+.artikel8-label-on-image {
+    position: absolute; /* Posisikan absolut relatif terhadap <a> induk */
+    bottom: 10px; /* Jarak dari bawah gambar */
+    right: 10px; /* Jarak dari kanan gambar */
+    background-color: #007bff; /* Warna biru, sesuaikan */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 10; /* Pastikan di atas gambar */
+}
+
+.artikel7-meta-author-date,
+.artikel8-meta-author-date {
+    font-size: 13px;
+    color: #666;
+    margin: 15px 15px 10px; /* Padding kiri-kanan seperti gambar */
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* Izinkan wrap jika ruang sempit */
+    gap: 8px; /* Jarak antar ikon/teks */
+}
+.artikel7-meta-author-date i,
+.artikel8-meta-author-date i {
+    color: #999;
+}
+
+.artikel7-title-large,
+.artikel8-title-large {
+    font-size: 18px; /* Judul artikel besar */
+    font-weight: bold;
+    color: #333;
+    line-height: 1.4;
+    margin: 0 15px 10px; /* Padding kiri-kanan seperti gambar */
+}
+
+.artikel7-description,
+.artikel8-description {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+    margin: 0 15px 15px; /* Padding kiri-kanan seperti gambar */
+}
+
+.artikel7-readmore-btn,
+.artikel8-readmore-btn {
+    display: inline-block;
+    background-color: #007bff; /* Warna biru */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    margin-left: 15px; /* Posisikan sejajar dengan konten */
+    transition: background-color 0.3s ease;
+}
+.artikel7-readmore-btn:hover,
+.artikel8-readmore-btn:hover {
+    background-color: #0056b3;
+}
+
+
+/* --- Artikel Kecil 2-4 (Vertical List) --- */
+.artikel7-vertical-list-small,
+.artikel8-vertical-list-small {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Jarak antar artikel kecil */
+}
+
+.artikel7-item-small,
+.artikel8-item-small {
+    display: block; /* Agar <a> di dalamnya bisa mengambil seluruh ruang */
+    text-decoration: none; /* Hapus underline default dari link */
+    color: inherit; /* Warisi warna teks dari parent */
+    transition: background-color 0.3s ease;
+}
+/* Efek hover untuk seluruh area item kecil (latar belakang berubah) */
+.artikel7-item-small:hover,
+.artikel8-item-small:hover {
+    background-color: #f0f0f0;
+}
+
+/* TARGET PENTING: Terapkan flexbox ke <a> di dalam artikelX-item-small */
+.artikel7-item-small > a,
+.artikel8-item-small > a {
+    display: flex !important; /* Paksa display flex */
+    flex-direction: row !important; /* Paksa arah baris */
+    align-items: flex-start !important; /* Paksa rata atas */
+    flex-wrap: nowrap !important; /* Paksa tidak membungkus */
+    width: 100%; /* Agar link mengisi seluruh lebar */
+    gap: 10px; /* Jarak antara gambar dan info */
+    padding: 5px 0; /* Padding vertikal untuk item kecil */
+}
+
+
+.artikel7-item-img-small,
+.artikel8-item-img-small {
+    flex-shrink: 0 !important;
+    width: 90px !important; /* Ukuran gambar kecil */
+    height: 90px !important; /* Ukuran gambar kecil */
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.artikel7-item-img-small img,
+.artikel8-item-img-small img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.artikel7-item-info-small,
+.artikel8-item-info-small {
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    min-width: 0 !important;
+    justify-content: center !important;
+}
+
+.artikel7-item-time-small,
+.artikel8-item-time-small {
+    font-size: 14px !important;
+    color: #999;
+    margin-bottom: 2px !important;
+}
+
+.artikel7-title-small,
+.artikel8-title-small {
+    font-size: 17px !important; /* Ukuran font judul */
+    font-weight: 600;
+    color: #333;
+    line-height: 1.3;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important; /* Batasi hingga 2 baris */
+    -webkit-box-orient: vertical !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    transition: color 0.3s ease; /* Transisi untuk efek hover */
+}
+
+/* Efek hover pada judul (h4) di dalam artikel kecil */
+.artikel7-item-small:hover .artikel7-title-small,
+.artikel8-item-small:hover .artikel8-title-small {
+    color: #007bff; /* Hijau kebiruan */
+}
+
+
+/* --- Responsive Adjustments --- */
+
+/* Responsive untuk Desktop (lebar > 1024px) */
+@media screen and (min-width: 1025px) {
+    .artikel7-8-container-wrapper {
+        flex-direction: row; 
+    }
+}
+
+
+/* Responsive untuk Tablet (768px - 1024px) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .artikel7-8-container-wrapper {
+        flex-direction: row; 
+        gap: 15px; 
+        padding: 0 16px;
+    }
+
+    .section-artikel7,
+    .section-artikel8 {
+        max-width: calc((100% - 15px) / 2);
+    }
+
+    .artikel7-wrapper,
+    .artikel8-wrapper {
+        padding: 15px 20px;
+    }
+
+    .artikel7-judul,
+    .artikel8-judul {
+        font-size: 20px;
+        max-width: calc(100% - 80px);
+    }
+
+    .artikel7-arrow-btn,
+    .artikel8-arrow-btn {
+        padding: 3px 5px;
+        font-size: 13px;
+    }
+
+    .artikel7-item-large img,
+    .artikel8-item-large img {
+        height: 150px;
+    }
+
+    .artikel7-title-large,
+    .artikel8-title-large {
+        font-size: 16px;
+    }
+    .artikel7-description,
+    .artikel8-description {
+        font-size: 13px;
+    }
+    .artikel7-readmore-btn,
+    .artikel8-readmore-btn {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .artikel7-item-img-small,
+    .artikel8-item-img-small {
+        width: 70px !important;
+        height: 70px !important;
+    }
+    .artikel7-item-time-small,
+    .artikel8-item-time-small {
+        font-size: 12px !important;
+    }
+    .artikel7-title-small,
+    .artikel8-title-small {
+        font-size: 15px !important;
+        -webkit-line-clamp: 3 !important;
+    }
+}
+
+/* Responsive untuk Mobile (lebar <= 767px) */
+@media screen and (max-width: 767px) {
+    .artikel7-8-container-wrapper {
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 16px;
+    }
+
+    .section-artikel7,
+    .section-artikel8 {
+        max-width: 100%;
+    }
+
+    .artikel7-wrapper,
+    .artikel8-wrapper {
+        padding: 16px 20px;
+    }
+
+    .artikel7-header,
+    .artikel8-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        margin-bottom: 15px;
+    }
+    .artikel7-judul,
+    .artikel8-judul {
+        font-size: 18px;
+        max-width: 100%;
+    }
+    .artikel7-nav,
+    .artikel8-nav {
+        position: absolute;
+        top: 0;
+        right: 0;
+        align-self: auto;
+    }
+
+    .artikel7-item-large img,
+    .artikel8-item-large img {
+        height: 160px;
+    }
+    .artikel7-title-large,
+    .artikel8-title-large {
+        font-size: 17px;
+    }
+    .artikel7-description,
+    .artikel8-description {
+        font-size: 13px;
+    }
+    .artikel7-readmore-btn,
+    .artikel8-readmore-btn {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .artikel7-item-img-small,
+    .artikel8-item-img-small {
+        width: 60px !important;
+        height: 60px !important;
+    }
+    .artikel7-item-time-small,
+    .artikel8-item-time-small {
+        font-size: 11px !important;
+    }
+    .artikel7-title-small,
+    .artikel8-title-small {
+        font-size: 14px !important;
+        -webkit-line-clamp: 3 !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* --- Bagian Artikel 9 --- */
+.section-artikel9 {
+    margin: 20px auto;
+    max-width: 1300px;
+    padding: 0 24px;
+    display: flex;
+    justify-content: flex-start;
+    box-sizing: border-box;
+}
+
+.artikel9-wrapper {
+    flex-grow: 1;
+    max-width: 870px;
+    width: 100%;
+    padding: 24px 30px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0,0,0,0.05);
+    box-sizing: border-box;
+}
+
+.artikel9-page-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #f200ea;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #ff00cc;
+}
+
+.artikel9-content-area {
+    min-height: 800px; /* Disesuaikan untuk menampung 2 artikel vertikal */
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Jarak antara dua artikel */
+}
+
+/* Style untuk setiap artikel individual di dalam container */
+.artikel9-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px; /* Jarak antara akhir artikel dengan pagination jika hanya ada 1 artikel */
+}
+
+.artikel9-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 380px; /* Tinggi gambar utama */
+    overflow: hidden;
+    margin-bottom: 15px; /* Jarak antara gambar dan deskripsi */
+}
+
+.artikel9-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.artikel9-overlay-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.artikel9-meta-overlay {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+.artikel9-meta-overlay .artikel9-meta-item i {
+    margin-right: 5px;
+    color: #ccc;
+}
+.artikel9-meta-overlay .artikel9-meta-item:last-child i.fa-fire {
+    color: #ff6600;
+}
+
+.artikel9-title {
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1.3;
+    margin: 0;
+}
+
+.artikel9-description {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 10px; /* Dikecilkan dari 20px, jarak deskripsi dengan tombol Baca Selengkapnya */
+    padding: 0 10px;
+}
+
+.artikel9-readmore-btn {
+    display: inline-block;
+    background-color: #ff00cc;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+    /* PERUBAHAN UTAMA DI SINI: Kurangi margin-bottom untuk jarak ke pagination */
+    margin-bottom: 15px; /* Dikecilkan dari 20px */
+}
+.artikel9-readmore-btn:hover {
+    background-color: #ff00cc;
+}
+
+/* --- Pagination (Previous/Next buttons) --- */
+.artikel9-pagination {
+    display: flex;
+    justify-content: space-between;
+    /* PERUBAHAN UTAMA DI SINI: Kurangi margin-top dari artikel sebelumnya */
+    margin-top: 20px; /* Dikecilkan dari 30px */
+    padding-top: 15px; /* Dikecilkan dari 20px */
+    border-top: 1px solid #eee;
+}
+
+.artikel9-pagination-btn {
+    background-color: #f0f0f0;
+    color: #555;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.artikel9-pagination-btn:hover {
+    background-color: #e0e0e0;
+    color: #333;
+}
+.artikel9-pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #f8f8f8;
+    color: #bbbbbb;
+}
+
+
+/* --- Responsive Adjustments --- */
+
+/* Responsive untuk Tablet (768px - 1024px) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .artikel9-pagination {
+        margin-top: 15px; /* Dikecilkan lagi dari 25px */
+        padding-top: 10px; /* Dikecilkan lagi dari 15px */
+    }
+    .artikel9-readmore-btn {
+        margin-bottom: 10px; /* Dikecilkan lagi dari 15px */
+    }
+
+    .section-artikel9 {
+        padding: 0 16px;
+    }
+    .artikel9-wrapper {
+        padding: 15px 20px;
+    }
+    .artikel9-page-title {
+        font-size: 22px;
+    }
+    .artikel9-content-area {
+        gap: 30px;
+    }
+    .artikel9-image-wrapper {
+        height: 300px;
+    }
+    .artikel9-overlay-content {
+        padding: 15px;
+    }
+    .artikel9-meta-overlay {
+        font-size: 13px;
+        gap: 10px;
+    }
+    .artikel9-title {
+        font-size: 24px;
+    }
+    .artikel9-description {
+        font-size: 14px;
+        padding: 0 5px;
+    }
+    .artikel9-readmore-btn {
+        padding: 10px 20px;
+        font-size: 15px;
+        margin-left: 5px;
+    }
+    .artikel9-pagination-btn {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+}
+
+/* Responsive untuk Mobile (lebar <= 767px) */
+@media screen and (max-width: 767px) {
+    /* KOREKSI UTAMA DI SINI UNTUK MOBILE */
+    .artikel9-pagination {
+        margin-top: 10px; /* Dikecilkan lagi dari 15px menjadi 10px */
+        padding-top: 8px; /* Dikecilkan lagi dari 10px menjadi 8px */
+    }
+
+    .artikel9-readmore-btn {
+        margin-bottom: 8px; /* Dikecilkan lagi dari 10px menjadi 8px */
+    }
+
+    /* --- Sisa kode mobile yang tidak berubah --- */
+    .section-artikel9 {
+        padding: 0 16px;
+    }
+    .artikel9-wrapper {
+        padding: 16px 20px;
+        max-width: 100%;
+    }
+    .artikel9-page-title {
+        font-size: 20px;
+    }
+    .artikel9-content-area {
+        gap: 25px;
+    }
+    .artikel9-image-wrapper {
+        height: 200px;
+    }
+    .artikel9-overlay-content {
+        padding: 10px;
+    }
+    .artikel9-meta-overlay {
+        font-size: 12px;
+        gap: 8px;
+    }
+    .artikel9-title {
+        font-size: 20px;
+    }
+    .artikel9-description {
+        font-size: 13px;
+        padding: 0;
+    }
+    .artikel9-readmore-btn {
+        padding: 8px 15px;
+        font-size: 14px;
+        margin-left: 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .artikel9-pagination {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .artikel9-pagination-btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+
+
 
 
 
