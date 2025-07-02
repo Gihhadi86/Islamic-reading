@@ -6,13 +6,12 @@
   <title>Rumaysho Style</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="Index.css">
-  <link rel="stylesheet" href="artikel lima.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 
 </head>
+
 <body>
-<!-- Gambar Iklan di atas header -->
 <div class="header-images">
   <img src="LOGO.png" alt="Logo" class="logo-header">
   <img src="IKLAN.jpg" alt="Iklan" class="iklan">
@@ -42,9 +41,7 @@
 <main>
 
 
-  <!-- Wrapper semua slide -->
   <div id="slider-wrapper">
-    <!-- SLIDE PERTAMA -->
     <div class="slider layout-utama slide" id="slide-1">
       <div class="featured-large">
         <a href="Keutamaan Sepuluh Awal Bulan Dzulhijjah.html">
@@ -58,7 +55,6 @@
         </a>
       </div>
       <div class="featured-grid">
-        <!-- Isi grid 4 artikel -->
         <div class="item">
           <a href="Bolehkah Menunda kebutuhan Orang Tua karena menuntut ilmu.html">
             <img src="Gambar/Ilmu.png" alt="Ilmu">
@@ -104,7 +100,6 @@
 
     
 
-    <!-- SLIDE KEDUA -->
     <div class="slider layout-utama slide" id="slide-2" style="display: none;">
       <div class="featured-large">
         <a href="#">
@@ -161,14 +156,10 @@
       </div>
     </div>
 
-    <!-- Tombol Next/Prev -->
-<button class="slider-arrow left-arrow" onclick="prevSlide()">&#10094;</button>
+    <button class="slider-arrow left-arrow" onclick="prevSlide()">&#10094;</button>
 <button class="slider-arrow right-arrow" onclick="nextSlide()">&#10095;</button>
 
   </div>
-
-
-
 
 
 
@@ -188,7 +179,6 @@
 
   <div class="slider-container">
     <div class="slider-track">
-      <!-- Artikel Slide 1 -->
       <div class="article">
         <a href="#">
           <img src="Gambar/Sembelih.png" alt="Sembelih">
@@ -245,7 +235,6 @@
         </a>
       </div>
 
-      <!-- Artikel Slide 2 -->
       <div class="article">
         <a href="#">
           <img src="Gambar/Mekah.png" alt="Mekah">
@@ -322,14 +311,7 @@
 
 
 
-
-
-
-
-
-
-
- <section class="section-bulughul">
+ <section class="section-bulughul" id="section-bulughul">
     <div class="konten-kiri">
       <h2 class="judul-box">Bulughul Maram</h2>
       <div class="artikel-list">
@@ -374,8 +356,8 @@
         </div>
       </div>
     </div>
-    <div class="konten-kanan">
-      <div class="sticky-kanan">
+    <div class="konten-kanan" id="stickyAdContainer">
+      <div class="sticky-kanan" id="stickyAd">
         <div class="facebook-box">
           <div class="facebook-header">
             <span>Facebook</span>
@@ -395,19 +377,12 @@
 
 
 
-
-
-
-
-
-
 <div class="artikel-empat-wrapper">
   <div class="artikel-empat-konten">
     <h2 class="artikel-empat-judul">Matan Taqrib Ibadah dan Muamalat</h2>
 
     <div class="artikel-empat-grid">
       
-      <!-- Artikel 1 -->
       <div class="artikel-empat-card">
         <a href="Apakah Wahabi Mengingkari Syafa’at Nabi ﷺ. html">
           <div class="artikel-empat-image-wrapper">
@@ -427,11 +402,10 @@
         </a>
       </div>
 
-      <!-- Artikel 2 -->
       <div class="artikel-empat-card">
         <a href="Hukum Mentauhidkan Allah Tapi Meninggalkan Kewajiban-Nya.html">
           <div class="artikel-empat-image-wrapper">
-            <img src="Gambar/Benar.png" alt="Artikel 2">
+            <img src="Gambar/Tauhid.png" alt="Artikel 2">
             <span class="artikel-empat-label">Shalat</span>
           </div>
           <div class="artikel-empat-info">
@@ -447,7 +421,6 @@
         </a>
       </div>
 
-      <!-- Artikel 3 -->
       <div class="artikel-empat-card">
         <a href="#">
           <div class="artikel-empat-image-wrapper">
@@ -467,7 +440,6 @@
         </a>
       </div>
 
-      <!-- Artikel 4 -->
       <div class="artikel-empat-card">
         <a href="#">
           <div class="artikel-empat-image-wrapper">
@@ -497,35 +469,29 @@
 
 
 
-
-
-
 <section class="section-artikel5">
     <div class="artikel5-wrapper">
-        <div class="artikel5-kiri">
-            <div class="artikel5-header">
-                <h2 class="artikel5-judul">Tadabur Ayat dari Juz Amma</h2>
-                <div class="artikel5-nav">
-                    <button class="arrow-btn prev">&larr;</button>
-                    <button class="arrow-btn next">&rarr;</button>
-                </div>
+        <div class="artikel5-header">
+            <h2 class="artikel5-judul">Tadabur Ayat dari Juz Amma</h2>
+            <div class="artikel5-nav">
+                <button class="arrow-btn prev">&larr;</button>
+                <button class="arrow-btn next">&rarr;</button>
             </div>
-
-            <div class="artikel5-slider">
-                <div class="artikel5-slides-container" id="slidesContainer">
-                    <div class="artikel5-slide">
-                        </div>
-                    <div class="artikel5-slide">
-                        </div>
-                </div>
-            </div>
-
-            <div class="artikel5-dots" id="dotsContainer">
-                </div>
         </div>
+
+        <div class="artikel5-slider">
+            <div class="artikel5-slides-container" id="slidesContainer">
+                    <div class="artikel5-slide">
+                        </div>
+                    <div class="artikel5-slide">
+                        </div>
+            </div>
+        </div>
+
+        <div class="artikel5-dots" id="dotsContainer">
+                </div>
     </div>
 </section>
-
 
 
 
@@ -534,7 +500,7 @@
 <section class="section-artikel6">
     <div class="artikel6-wrapper">
         <div class="artikel6-header">
-            <h2 class="artikel6-judul">Harta Haram Muamalat Kontemporer</h2>
+            <h2 class="artikel6-judul">Harta Haram </h2>
             <div class="artikel6-nav">
                 <span>All</span>
                 <button class="artikel6-arrow-btn artikel6-prev-arrow">&#10094;</button>
@@ -572,7 +538,7 @@
                 <div class="artikel6-item-small">
                     <a href="#">
                         <div class="artikel6-item-img">
-                            <img src="Gambar/Benar.png" alt="Budaya Politik"> </div>
+                            <img src="Gambar/Tauhid.png" alt="Budaya Politik"> </div>
                         <div class="artikel6-item-info">
                             <span class="artikel6-item-time">February 21, 2024</span>
                             <h3 class="artikel6-item-title">Khutbah Jumat: Budaya Politik Uang dan Sogok yang Parah di Negeri Ini</h3>
@@ -620,11 +586,6 @@
 
 
 
-
-
-
-
-
 <div class="artikel7-8-container-wrapper">
     <section class="section-artikel7">
         <div class="artikel7-wrapper">
@@ -665,7 +626,7 @@
                     <div class="artikel7-item-small">
                         <a href="#">
                             <div class="artikel7-item-img-small">
-                                <img src="Gambar/Benar.png" alt="Hadits Arbain 3"> </div>
+                                <img src="Gambar/Tauhid.png" alt="Hadits Arbain 3"> </div>
                             <div class="artikel7-item-info-small">
                                 <span class="artikel7-item-time-small">July 5, 2020</span>
                                 <h4 class="artikel7-title-small">Barang yang Haram Diperjualbelikan (Hadits Jamiul Ulum wal Hikam #45)</h4>
@@ -686,11 +647,6 @@
             </div>
         </div>
     </section>
-
-
-
-
-
 
 
 
@@ -764,16 +720,13 @@
 
 
 
-
-
-
-<section class="section-artikel9">
+<section class="section-artikel9" id="section-artikel9">
     <div class="artikel9-wrapper">
         <h2 class="artikel9-page-title">Faedah Dari Imam Ibnul Qayyim</h2> <div class="artikel9-content-area">
             <div class="artikel9-article-container">
                 <div class="artikel9-item">
                     <div class="artikel9-image-wrapper">
-                        <img src="Gambar/Benar.png" alt="Dampak Mengutamakan Dunia">
+                        <img src="Gambar/DampakMengutamakanDunia.png" alt="Dampak Mengutamakan Dunia">
                         <div class="artikel9-overlay-content">
                             <div class="artikel9-meta-overlay">
                                 <span class="artikel9-meta-item"><i class="fas fa-user-circle"></i> Muhammad Abduh Tuasikal, MSc</span>
@@ -801,17 +754,18 @@
     </div>
 </section>
 
-
-
-
-
-
-
-
-
-
+<section class="mobile-ad-section">
+    <div class="facebook-box">
+        <div class="facebook-header">
+            <span>Facebook</span>
+            <i class="fab fa-facebook-f"></i>
+        </div>
+    </div>
+    <div class="iklan-box">
+        <img src="Gambar/Stitma3.png" alt="Iklan Resmi">
+    </div>
+</section>
     
-<!-- Footer -->
 <footer>
     <div class="footer-container">
         <div class="footer-section">
@@ -848,7 +802,7 @@
 
  
 
+    
 <script src="Script Index.js"></script>
-<script src="artikel5.js"></script>
 </body>
 </html>
