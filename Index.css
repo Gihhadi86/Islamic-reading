@@ -637,37 +637,37 @@
     margin-top: 20px; /* DITAMBAH */
   }
 }
-
 /* Layar Mobile (max-width: 679px): 1 Kolom (Horizontal Scroll) */
 @media (max-width: 679px) {
   .slider-horizontal {
-    /* KUNCI: Untuk jarak dari tepi di mobile */
-    padding: 15px; /* DITAMBAH: Padding sisi konsisten (luar) */
-    width: calc(100% - 30px); /* Lebar container adalah 100% viewport dikurangi 2*15px padding */
-    max-width: 100vw;
-    margin: 20px auto; /* DITAMBAH */
-    /* MEMASTIKAN BORDER/SHADOW CONTAINER ADA DI MOBILE JUGA */
-    border-radius: 8px; /* Kembalikan radius */
-    border: 1px solid #e0e0e0; /* Kembalikan border */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03); /* Kembalikan shadow */
+    /* Padding ini adalah jarak dari tepi web (15px dari kiri/kanan) */
+    padding: 15px; /* Consistent padding for mobile (outer frame) */
+    width: calc(100% - 30px); /* Container width is 100% viewport minus 2*15px padding */
+    max-width: 100vw; /* Take full viewport width (constrained by width calc) */
+    margin: 20px auto; /* Consistent top/bottom margin */
+    
+    /* Memastikan border/shadow container ada di mobile juga */
+    border-radius: 8px; /* Ensure border-radius remains */
+    border: 1px solid #e0e0e0; /* Ensure border remains */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03); /* Ensure shadow remains */
   }
 
   .slider-header {
-    margin-bottom: 20px; /* DITAMBAH */
-    padding: 0 0 10px; /* DITAMBAH */
+    margin-bottom: 20px; /* Consistent margin-bottom */
+    padding: 0 0 10px; /* Consistent padding-bottom */
   }
   .slider-header h2 {
-    font-size: 18px; /* DITAMBAH */
-    padding-right: 15px; /* DITAMBAH */
+    font-size: 18px; /* Consistent font-size */
+    padding-right: 15px; /* Consistent padding-right */
   }
   .slider-nav {
-    gap: 5px; /* DITAMBAH */
-    right: 0;
-    top: 5px;
+    gap: 5px; /* Consistent gap */
+    right: 0; /* Align to right edge of .slider-horizontal's content box */
+    top: 5px; /* Align to top of .slider-horizontal's content box */
   }
   .slider-nav button {
-    font-size: 14px; /* DITAMBAH */
-    padding: 4px 7px; /* DITAMBAH */
+    font-size: 14px; /* Consistent font-size */
+    padding: 4px 7px; /* Consistent padding */
   }
 
   .slider-container {
@@ -675,60 +675,74 @@
   }
   
   .slider-track {
-    gap: 15px; /* DITAMBAH: gap antar artikel mobile */
-    padding: 0 0;
+    display: flex; /* Active Flexbox */
+    flex-wrap: nowrap; /* KUNCI: Artikel TIDAK AKAN membungkus, akan memanjang horizontal */
+    width: max-content; /* Track akan selebar total artikel */
+    /* KUNCI: Padding di sini untuk memastikan artikel berada di tengah, dan ada ruang di ujung */
+    gap: 0; /* Hapus gap di track, jarak diatur oleh margin artikel */
+    padding: 0 15px; /* Padding di awal dan akhir track untuk jarak dari tepi container */
   }
 
   .article {
-    flex: 0 0 280px; /* DITAMBAH: lebar tetap artikel mobile */
-    max-width: 280px;
-    min-width: 280px;
-    scroll-snap-align: start;
+    /* KUNCI UTAMA: Lebar artikel di mobile agar 1 per view dan pas */
+    flex: 0 0 calc(100vw - 60px); /* Artikel mengambil 100% viewport dikurangi 2*15px (padding slider-horizontal) + 2*15px (padding slider-track) */
+    max-width: calc(100vw - 60px);
+    min-width: calc(100vw - 60px); /* Pastikan tidak menyusut lebih dari ini */
+    scroll-snap-align: start; /* Snapping di awal artikel */
     
-    /* HAPUS TOTAL GAYA CARD DAN HOVER DI MOBILE */
+    /* HAPUS GAYA CARD DAN HOVER DI MOBILE (reiterasi) */
     border-radius: 0; /* HAPUS border-radius */
     border: none; /* HAPUS border */
     box-shadow: none; /* HAPUS box-shadow */
+    margin: 0; /* Hapus margin horizontal di sini, padding track yang handle */
   }
   
   .article img {
-    height: 150px; /* DITAMBAH TINGGINYA */
+    height: 150px; /* DITAMBAH TINGGINYA: tinggi gambar mobile */
     border-radius: 0; /* HAPUS border-radius gambar */
   }
 
   .article-content {
-    padding: 12px 10px; /* DITAMBAH */
+    padding: 12px 10px; /* DITAMBAH: padding konten artikel */
   }
 
   .meta-info {
-    font-size: 12px; /* DITAMBAH */
-    gap: 5px; /* DITAMBAH */
-    margin-bottom: 8px; /* DITAMBAH */
+    font-size: 12px; /* DITAMBAH: font-size meta-info */
+    gap: 5px; /* DITAMBAH: gap meta-info */
+    margin-bottom: 8px; /* DITAMBAH: margin-bottom meta-info */
   }
   .meta-info i {
-    font-size: 11px; /* DITAMBAH */
+    font-size: 11px; /* DITAMBAH: font-size ikon meta-info */
   }
 
   .article h3 {
-    font-size: 14px; /* DITAMBAH */
-    line-height: 1.3;
-    margin: 0 0 8px; /* DITAMBAH */
+    font-size: 14px; /* DITAMBAH: font-size judul artikel */
+    line-height: 1.3; /* Consistent line-height */
+    margin: 0 0 8px; /* Consistent margin */
   }
   .article p {
-    font-size: 12px; /* DITAMBAH */
-    line-height: 1.5;
-    margin: 0 0 10px; /* DITAMBAH */
+    font-size: 12px; /* DITAMBAH: font-size deskripsi artikel */
+    line-height: 1.5; /* Consistent line-height */
+    margin: 0 0 10px; /* Consistent margin */
   }
 
   .slider-dots {
-    margin-top: 20px; /* DITAMBAH */
-    gap: 6px; /* DITAMBAH */
+    margin-top: 20px; /* DITAMBAH: margin-top dots */
+    gap: 6px; /* Consistent gap */
   }
   .dot {
-    width: 8px; /* DITAMBAH */
-    height: 8px; /* DITAMBAH */
+    width: 8px; /* Consistent width */
+    height: 8px; /* Consistent height */
   }
 }
+
+
+
+
+
+
+
+
 
 
 
