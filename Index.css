@@ -304,56 +304,61 @@
 #slider-wrapper {
   position: relative;
 }
-
-
-
-
-
 /* ---------- START HAJI UMRAH SLIDER (slider-horizontal) ---------- */
 .slider-horizontal {
-  margin: 30px auto;
-  padding: 24px 30px;
-  max-width: 1155px;
+  margin: 20px auto; /* Margin atas/bawah, menengahkan container */
+  width: calc(100% - 40px); /* Lebar container adalah 100% viewport dikurangi 2*20px (kiri+kanan) */
+  max-width: 960px; /* Lebar maksimum untuk desktop, agar tidak terlalu besar di layar super lebar */
+  
+  padding: 20px 20px; /* DITAMBAH TINGGINYA: padding vertikal untuk tampilan lebih tinggi, horizontal tetap 20px */
+  
   overflow: hidden;
-  border: 1px solid #e0e0e0; /* Tetap pertahankan border luar container */
-  border-radius: 8px; /* Tetap pertahankan radius luar container */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03); /* Tetap pertahankan shadow luar container */
-  box-sizing: border-box;
+  border: 1px solid #e0e0e0; /* MEMPERTAHANKAN GARIS CONTAINER */
+  border-radius: 8px; /* MEMPERTAHANKAN RADIUS CONTAINER */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03); /* MEMPERTAHANKAN SHADOW CONTAINER */
+  box-sizing: border-box; /* Sangat penting agar padding dan border tidak menambah lebar total */
 }
 
 .slider-header {
   border-bottom: 2px solid #e60000;
-  padding: 10px 0 12px;
-  margin-bottom: 25px;
+  padding: 10px 0 12px; /* DITAMBAH TINGGINYA: padding header vertikal */
+  margin-bottom: 25px; /* DITAMBAH TINGGINYA: margin bawah header */
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
+  flex-wrap: nowrap;
 }
 
 .slider-header h2 {
   color: #e60000;
-  font-size: 22px;
+  font-size: 20px; /* DITAMBAH UKURAN JUDUL */
   font-weight: 700;
   margin: 0;
   flex-grow: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 100px;
+  padding-right: 10px;
 }
 
 /* Navigasi Panah di Header */
 .slider-nav {
   display: flex;
-  gap: 8px;
-  position: static; /* Pastikan static agar mengikuti flex-flow */
+  gap: 5px;
+  position: static;
   height: auto;
   align-items: center;
-  margin-left: 15px; /* Beri sedikit jarak dari judul */
+  margin-left: 10px;
+  flex-shrink: 0;
 }
 
 .slider-nav button {
   background-color: transparent;
   border: 1px solid #ddd;
-  font-size: 16px;
-  padding: 5px 8px;
+  font-size: 14px; /* DITAMBAH UKURANNYA */
+  padding: 4px 7px; /* DITAMBAH UKURANNYA */
   color: #666;
   border-radius: 4px;
   cursor: pointer;
@@ -380,36 +385,50 @@
 /* Slider Kontainer dan Track */
 .slider-container {
   position: relative;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   width: 100%;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
 }
+
+.slider-container::-webkit-scrollbar {
+  display: none;
+}
+.slider-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 
 .slider-track {
   display: flex;
+  flex-wrap: nowrap; /* Tetap nowrap untuk horizontal scroll */
   transition: transform 0.5s ease-in-out;
-  gap: 20px; /* Jarak horizontal antar artikel (default/desktop) */
-  padding-bottom: 20px;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
+  gap: 20px; /* DITAMBAH TINGGINYA: gap antar artikel horizontal */
+  padding-bottom: 20px; /* DITAMBAH TINGGINYA: padding bawah track */
 }
 
 /* Style untuk Setiap Artikel */
 .article {
-  background: #ffffff; /* Latar belakang tetap putih */
-  border-radius: 0; /* Hapus border-radius */
+  background: #ffffff;
+  /* HAPUS TOTAL GAYA CARD DAN HOVER */
+  border-radius: 0; /* HAPUS border-radius */
   overflow: hidden;
   box-sizing: border-box;
-  border: none; /* Hapus border */
-  box-shadow: none; /* Hapus box-shadow */
+  border: none; /* HAPUS border */
+  box-shadow: none; /* HAPUS box-shadow */
   flex-shrink: 0;
+  flex-grow: 0;
   display: flex;
   flex-direction: column;
-  /* Hapus transisi jika tidak ada efek hover */
-  transition: none;
+  min-width: 0; /* Akan diatur di media queries */
+  transition: none; /* HAPUS SEMUA TRANSISI */
+  scroll-snap-align: start;
 }
 
 .article:hover {
-  /* Hapus semua efek hover */
+  /* HAPUS TOTAL EFEK HOVER */
   box-shadow: none;
   transform: none;
 }
@@ -425,14 +444,14 @@
 
 .article img {
   width: 100%;
-  height: 180px; /* Tinggi gambar konsisten untuk desktop */
+  height: 160px; /* DITAMBAH TINGGINYA: tinggi gambar */
   object-fit: cover;
-  border-radius: 0; /* Hapus border-radius pada gambar */
+  border-radius: 0; /* HAPUS border-radius pada gambar */
   display: block;
 }
 
 .article-content {
-  padding: 15px 0 0; /* Kembali ke padding awal atau sesuaikan */
+  padding: 12px 10px 10px 10px; /* DITAMBAH TINGGINYA: padding konten artikel */
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -444,10 +463,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 13px;
+  font-size: 12px; /* DITAMBAH UKURANNYA */
   color: #777;
-  margin-bottom: 8px;
-  flex-wrap: wrap;
+  margin-bottom: 8px; /* DITAMBAH UKURANNYA */
+  flex-wrap: nowrap;
   padding-top: 0;
 }
 
@@ -455,11 +474,11 @@
 .meta-info .meta-right {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 5px; /* DITAMBAH UKURANNYA */
 }
 
 .meta-info i {
-  font-size: 12px;
+  font-size: 11px; /* DITAMBAH UKURANNYA */
   margin-right: 2px;
   color: #999;
 }
@@ -469,11 +488,11 @@
 }
 
 .article h3 {
-  font-size: 16px;
+  font-size: 15px; /* DITAMBAH UKURANNYA */
   font-weight: bold;
-  margin: 0 0 8px;
+  margin: 0 0 8px; /* DITAMBAH UKURANNYA */
   color: #222;
-  line-height: 1.4;
+  line-height: 1.3;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -482,10 +501,10 @@
 }
 
 .article p {
-  font-size: 14px;
+  font-size: 13px; /* DITAMBAH UKURANNYA */
   color: #555;
-  line-height: 1.6;
-  margin: 0 0 10px;
+  line-height: 1.5;
+  margin: 0 0 10px; /* DITAMBAH UKURANNYA */
   flex-grow: 1;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -501,13 +520,13 @@
 .slider-dots {
   display: flex;
   justify-content: center;
-  gap: 8px;
-  margin-top: 25px;
+  gap: 6px; /* DITAMBAH UKURANNYA */
+  margin-top: 20px; /* DITAMBAH UKURANNYA */
 }
 
 .dot {
-  width: 10px;
-  height: 10px;
+  width: 8px; /* DITAMBAH UKURANNYA */
+  height: 8px; /* DITAMBAH UKURANNYA */
   background: #bbb;
   border-radius: 50%;
   display: inline-block;
@@ -519,210 +538,197 @@
   background: #e60000;
 }
 
-/* --- Media Queries untuk Responsif --- */
+/* --- Media Queries untuk Responsif Adaptif --- */
 
-/* Layar HP: 1 Kolom */
-@media (max-width: 767px) {
+/* Desktop Sangat Besar (min-width: 1400px): 4 Kolom */
+@media (min-width: 1400px) {
+    .slider-horizontal {
+        width: calc(100% - 40px); /* Jarak 20px dari tepi web */
+        max-width: 960px; /* Maksimum 960px */
+        padding: 20px 20px; /* Padding internal container */
+    }
+    .slider-track {
+        gap: 20px; /* Disesuaikan gap */
+    }
+    .article {
+        flex-basis: calc(25% - (3 * 20px / 4)); /* Disesuaikan dengan gap baru */
+        max-width: calc(25% - (3 * 20px / 4));
+        min-width: 250px; /* Disesuaikan min-width */
+    }
+}
+
+
+/* Desktop Besar (min-width: 1100px dan max-width: 1399px): 4 Kolom menyusut, atau horizontal scroll */
+@media (min-width: 1100px) and (max-width: 1399px) {
+    .slider-horizontal {
+        padding: 20px 20px; /* DITAMBAH TINGGINYA, dan padding horizontal 20px dari tepi */
+        width: calc(100% - 40px); /* Lebar container 100% viewport dikurangi 2*20px */
+        max-width: 100%;
+    }
+    .slider-track {
+        gap: 18px; /* DITAMBAH TINGGINYA */
+    }
+    .article {
+        flex-basis: calc(25% - (3 * 18px / 4)); /* Disesuaikan dengan gap baru */
+        max-width: calc(25% - (3 * 18px / 4));
+        min-width: 240px; /* DITAMBAH TINGGINYA */
+    }
+}
+
+/* Desktop Menengah (min-width: 900px dan max-width: 1099px): 3 Kolom */
+@media (min-width: 900px) and (max-width: 1099px) {
+    .slider-horizontal {
+        padding: 20px 20px; /* DITAMBAH TINGGINYA, dan padding horizontal 20px dari tepi */
+        width: calc(100% - 40px); /* Lebar container adalah 100% viewport dikurangi 2*20px */
+        max-width: 100%;
+    }
+    .slider-track {
+        gap: 20px; /* DITAMBAH TINGGINYA */
+    }
+    .article {
+        flex-basis: calc(33.333% - (2 * 20px / 3)); /* Disesuaikan dengan gap baru */
+        max-width: calc(33.333% - (2 * 20px / 3));
+        min-width: 280px; /* DITAMBAH TINGGINYA */
+    }
+    .article img {
+        height: 150px; /* DITAMBAH TINGGINYA */
+    }
+    .article h3 {
+        font-size: 14px; /* DITAMBAH */
+    }
+    .article p {
+        font-size: 12px; /* DITAMBAH */
+    }
+}
+
+/* Desktop Kecil / Tablet Besar (min-width: 680px dan max-width: 899px): 2 Kolom */
+@media (min-width: 680px) and (max-width: 899px) {
   .slider-horizontal {
+    padding: 18px 15px; /* DITAMBAH TINGGINYA, dan padding horizontal 15px dari tepi */
+    width: calc(100% - 30px); /* Lebar container adalah 100% viewport dikurangi 2*15px */
+    max-width: 100%;
+  }
+  .slider-track {
+    gap: 15px; /* DITAMBAH TINGGINYA */
+  }
+  .article {
+    flex-basis: calc(50% - (1 * 15px / 2)); /* Disesuaikan dengan gap */
+    max-width: calc(50% - (1 * 15px / 2));
+    min-width: 300px; /* DITAMBAH TINGGINYA */
+  }
+  .article img {
+    height: 140px; /* DITAMBAH TINGGINYA */
+  }
+  .article-content {
+    padding: 12px 10px; /* DITAMBAH */
+  }
+  .meta-info {
+    font-size: 12px; /* DITAMBAH */
+  }
+  .article h3 {
+    font-size: 14px; /* DITAMBAH */
+    -webkit-line-clamp: 3;
+  }
+  .article p {
+    font-size: 12px; /* DITAMBAH */
+    -webkit-line-clamp: 4;
+  }
+  .slider-dots {
+    margin-top: 20px; /* DITAMBAH */
+  }
+}
+
+/* Layar Mobile (max-width: 679px): 1 Kolom (Horizontal Scroll) */
+@media (max-width: 679px) {
+  .slider-horizontal {
+    /* KUNCI: Untuk jarak dari tepi di mobile */
+    padding: 15px; /* DITAMBAH: Padding sisi konsisten (luar) */
+    width: calc(100% - 30px); /* Lebar container adalah 100% viewport dikurangi 2*15px padding */
     max-width: 100vw;
-    padding: 15px;
-    margin: 20px auto;
-    border-radius: 6px; /* Tetap pertahankan radius luar container */
+    margin: 20px auto; /* DITAMBAH */
+    /* MEMASTIKAN BORDER/SHADOW CONTAINER ADA DI MOBILE JUGA */
+    border-radius: 8px; /* Kembalikan radius */
+    border: 1px solid #e0e0e0; /* Kembalikan border */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03); /* Kembalikan shadow */
   }
 
   .slider-header {
-    margin-bottom: 20px;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 10px;
+    margin-bottom: 20px; /* DITAMBAH */
+    padding: 0 0 10px; /* DITAMBAH */
   }
-
   .slider-header h2 {
-    font-size: 18px;
-    margin-right: 10px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 18px; /* DITAMBAH */
+    padding-right: 15px; /* DITAMBAH */
   }
-
   .slider-nav {
-    margin-top: 0;
-    margin-left: 0;
-    flex-shrink: 0;
+    gap: 5px; /* DITAMBAH */
+    right: 0;
+    top: 5px;
+  }
+  .slider-nav button {
+    font-size: 14px; /* DITAMBAH */
+    padding: 4px 7px; /* DITAMBAH */
   }
 
   .slider-container {
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 10px;
+    padding-bottom: 0;
   }
-
+  
   .slider-track {
-    gap: 0;
-    padding: 0 15px;
-    width: max-content;
+    gap: 15px; /* DITAMBAH: gap antar artikel mobile */
+    padding: 0 0;
   }
 
   .article {
-    flex: 0 0 calc(100vw - 30px);
-    max-width: calc(100vw - 30px);
-    margin: 0 7.5px;
-    scroll-snap-align: center;
-    box-shadow: none; /* Hapus shadow di HP */
-    border-radius: 0; /* Hapus radius di HP */
+    flex: 0 0 280px; /* DITAMBAH: lebar tetap artikel mobile */
+    max-width: 280px;
+    min-width: 280px;
+    scroll-snap-align: start;
+    
+    /* HAPUS TOTAL GAYA CARD DAN HOVER DI MOBILE */
+    border-radius: 0; /* HAPUS border-radius */
+    border: none; /* HAPUS border */
+    box-shadow: none; /* HAPUS box-shadow */
   }
-
-  .article:first-child {
-      margin-left: 0;
-  }
-
-  .article:last-child {
-      margin-right: 0;
-  }
-
+  
   .article img {
-    height: 180px; /* Tinggi gambar tetap */
-    border-radius: 0; /* Hapus radius gambar di HP */
+    height: 150px; /* DITAMBAH TINGGINYA */
+    border-radius: 0; /* HAPUS border-radius gambar */
   }
 
   .article-content {
-    padding: 15px; /* Padding konten di HP */
+    padding: 12px 10px; /* DITAMBAH */
   }
 
   .meta-info {
-    font-size: 12px;
-    gap: 8px;
-    margin-bottom: 8px;
+    font-size: 12px; /* DITAMBAH */
+    gap: 5px; /* DITAMBAH */
+    margin-bottom: 8px; /* DITAMBAH */
   }
-
   .meta-info i {
-    font-size: 11px;
+    font-size: 11px; /* DITAMBAH */
   }
 
   .article h3 {
-    font-size: 16px;
-    line-height: 1.4;
-    -webkit-line-clamp: 2;
+    font-size: 14px; /* DITAMBAH */
+    line-height: 1.3;
+    margin: 0 0 8px; /* DITAMBAH */
   }
-
   .article p {
-    font-size: 14px;
-    line-height: 1.6;
-    -webkit-line-clamp: 3;
-    margin-bottom: 15px;
+    font-size: 12px; /* DITAMBAH */
+    line-height: 1.5;
+    margin: 0 0 10px; /* DITAMBAH */
   }
 
   .slider-dots {
-    margin-top: 20px;
-    gap: 8px;
+    margin-top: 20px; /* DITAMBAH */
+    gap: 6px; /* DITAMBAH */
   }
-
   .dot {
-    width: 10px;
-    height: 10px;
+    width: 8px; /* DITAMBAH */
+    height: 8px; /* DITAMBAH */
   }
 }
-
-/* Layar Tablet: 2 Kolom */
-@media (min-width: 768px) and (max-width: 1024px) {
-  .slider-track {
-    gap: 20px;
-  }
-
-  .article {
-    flex: 0 0 calc(50% - 10px);
-    max-width: calc(50% - 10px);
-    box-shadow: none; /* Hapus shadow di Tablet */
-    border-radius: 0; /* Hapus radius di Tablet */
-  }
-
-  .article img {
-    height: 160px;
-    border-radius: 0; /* Hapus radius gambar di Tablet */
-  }
-
-  .article-content {
-    padding: 15px 10px;
-  }
-
-  .meta-info {
-    font-size: 12px;
-  }
-
-  .article h3 {
-    font-size: 15px;
-    -webkit-line-clamp: 2;
-  }
-
-  .article p {
-    font-size: 13px;
-    -webkit-line-clamp: 3;
-  }
-}
-
-/* Layar Desktop: 4 Kolom (dan ukuran yang lebih besar) */
-@media (min-width: 1025px) {
-  .slider-track {
-    gap: 20px;
-  }
-
-  .article {
-    flex: 0 0 calc(25% - 15px);
-    max-width: calc(25% - 15px);
-    box-shadow: none; /* Hapus shadow di Desktop */
-    border-radius: 0; /* Hapus radius di Desktop */
-  }
-
-  .article img {
-    height: 180px;
-    border-radius: 0; /* Hapus radius gambar di Desktop */
-  }
-
-  .article-content {
-    padding: 15px 10px;
-  }
-
-  .meta-info {
-    font-size: 13px;
-  }
-
-  .article h3 {
-    font-size: 16px;
-    -webkit-line-clamp: 2;
-  }
-
-  .article p {
-    font-size: 14px;
-    -webkit-line-clamp: 3;
-  }
-}
-
-/* --- Opsional: Styling Scrollbar (untuk menghilangkan visual di beberapa browser) --- */
-.slider-container::-webkit-scrollbar {
-  height: 0; /* Menyembunyikan scrollbar horizontal */
-  width: 0;
-}
-.slider-container::-webkit-scrollbar-thumb {
-  background: transparent;
-}
-.slider-container::-webkit-scrollbar-track {
-  background: transparent;
-}
-.slider-container {
-  scrollbar-width: none; /* Menyembunyikan scrollbar untuk Firefox */
-}
-
-
-
-
-
-
-
-
-
-
 
 
 
