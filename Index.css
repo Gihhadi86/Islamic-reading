@@ -304,6 +304,22 @@
 #slider-wrapper {
   position: relative;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ---------- START HAJI UMRAH SLIDER (slider-horizontal) ---------- */
 .slider-horizontal {
   margin: 20px auto; /* Margin atas/bawah, menengahkan container */
@@ -742,10 +758,6 @@
 
 
 
-
-
-
-
 .section-bulughul {
   margin: -20px auto; /* Kembali ke -20px sesuai permintaan */
   max-width: 1300px;
@@ -809,12 +821,13 @@
   display: block;
 }
 
+/* Warna Crystal Purple untuk judul Bulughul Maram */
 .judul-box {
   font-size: 22px;
   font-weight: bold;
-  color: #0066ff;
+  color: #a4508b; /* Ungu Crystal */
   margin-bottom: 20px;
-  border-bottom: 2px solid #0066ff;
+  border-bottom: 2px solid #a4508b; /* Sesuaikan warna border bawah */
   padding-bottom: 5px;
 }
 
@@ -828,7 +841,7 @@
   border-radius: 6px; /* Tetap border-radius untuk desktop */
   overflow: hidden;
   flex: 1 1 calc(33.333% - 16.66px); /* Tetap 3 kolom untuk desktop */
-  transition: 0.3s;
+  transition: none; /* Hapus transisi untuk menghilangkan efek maju */
   display: flex;
   flex-direction: column;
   /* Tidak ada margin-bottom atau border di sini untuk desktop/default */
@@ -864,6 +877,11 @@
   font-weight: bold;
   margin: 5px 10px 8px; /* Tetap margin 5 10 8 untuk desktop */
   color: #222;
+  transition: color 0.2s ease-in-out; /* Transisi untuk hover judul */
+}
+
+.artikel-item h3:hover {
+  color: #a4508b; /* Ungu crystal pekat saat hover */
 }
 
 .artikel-item p {
@@ -873,125 +891,97 @@
   margin: 0 10px 10px; /* Tetap margin 0 10 10 untuk desktop */
 }
 
+/* Warna Crystal Purple untuk Baca Selengkapnya - tampilan box (selalu ungu pekat) */
 .read-more {
   font-size: 13px;
-  color: #007bff;
+  color: #fff; /* Teks putih secara default */
   display: inline-block;
   margin: 0 10px 12px; /* Tetap margin 0 10 12 untuk desktop */
+
+  background-color: #a4508b; /* Latar belakang ungu crystal pekat */
+  padding: 8px 15px; /* Padding di dalam box */
+  border: 1px solid #a4508b; /* Garis ungu crystal */
+  border-radius: 4px; /* Sudut sedikit membulat */
+  text-decoration: none; /* Hilangkan underline bawaan link */
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; /* Transisi halus untuk hover (jika ingin ada efek lain di hover) */
 }
 
-/* === Media Query untuk Tablet dan Mobile (RESPONSIVE) === */
+.read-more:hover {
+  /* Opsional: jika ingin ada efek sedikit berbeda saat hover, contohnya sedikit menggelap */
+  background-color: #8c4270; /* Sedikit lebih gelap dari ungu crystal */
+}
+
+/* === Media Query untuk Tablet (Ketika Iklan Hilang & Tetap 3 Horizontal) === */
 @media (max-width: 1024px) {
   .section-bulughul {
     flex-direction: column;
-    max-width: 94vw;
+    max-width: 94vw; /* Pertahankan lebar responsif */
     padding: 16px 12px;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
     position: relative;
-    margin: 20px auto; /* Memberi jarak atas dan bawah untuk section keseluruhan */
+    margin: 20px auto;
   }
 
   .konten-kiri {
-    border: none; /* Hapus border di responsif */
+    border: 1px solid #e0e0e0; /* Border untuk konten-kiri di tablet */
     position: relative;
-    padding: 0; /* Hapus padding di responsif */
+    padding: 20px; /* Sesuaikan padding agar terlihat bagus dengan border */
   }
 
+  /* Artikel tetap 3 kolom horizontal */
   .artikel-list {
-    flex-wrap: wrap; /* Pastikan artikel turun ke bawah */
-    gap: 0; /* Hapus gap horizontal di sini, margin artikel yang akan mengatur */
-    padding: 0; /* Hapus padding horizontal di sini */
-    overflow-x: hidden; /* Pastikan tidak ada scroll horizontal */
-    scroll-snap-type: none; /* Hapus snap */
-    scroll-behavior: auto; /* Hapus smooth scroll */
-    -webkit-overflow-scrolling: auto; /* Hapus touch scrolling */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px; /* Tetap pertahankan gap horizontal */
+    padding: 0;
+    overflow-x: hidden;
   }
 
   .artikel-item {
-    flex: 0 0 100%; /* Setiap artikel mengambil 100% lebar */
-    max-width: 100%;
-    /* === Jarak Atas dan Bawah hanya di Responsif === */
-    margin-bottom: 20px; /* Jarak bawah antar artikel */
-    background-color: #fff; /* Pastikan background putih */
-
-    /* === Garis Pembatas hanya di Responsif === */
-    border-top: 1px solid #eee; /* Garis di atas setiap artikel */
-    border-bottom: 1px solid #eee; /* Garis di bawah setiap artikel */
-    padding: 20px 0; /* Padding vertikal untuk memberi ruang ke garis */
-    border-radius: 0; /* Pastikan tidak ada border-radius */
-    box-shadow: none; /* Pastikan tidak ada shadow */
-  }
-
-  /* Aturan khusus untuk artikel pertama dan terakhir agar garis tidak double atau tidak perlu */
-  .artikel-item:first-child {
-      border-top: none; /* Hapus border atas untuk artikel pertama */
-      padding-top: 0; /* Hapus padding atas untuk artikel pertama */
-  }
-  .artikel-item:last-child {
-      border-bottom: none; /* Hapus border bawah untuk artikel terakhir */
-      margin-bottom: 0; /* Hapus margin bawah untuk artikel terakhir */
-      padding-bottom: 0; /* Hapus padding bawah untuk artikel terakhir */
+    flex: 1 1 calc(
+      33.333% - 16px
+    ); /* Tetap 3 kolom, sesuaikan margin/gap */
+    max-width: calc(33.333% - 16px); /* Pastikan lebar tetap 3 kolom */
+    margin-bottom: 24px; /* Jarak antar baris */
+    background-color: #fff;
+    border-radius: 6px; /* Kembalikan border-radius untuk tampilan horizontal */
+    overflow: hidden;
+    border: none; /* Hapus border yang tidak perlu di sini */
+    box-shadow: none;
+    padding: 0;
   }
 
   .artikel-item img {
-    height: auto;
-    aspect-ratio: 16 / 9;
-    border-radius: 0;
+    width: 100%;
+    height: 180px; /* Tetap tinggi gambar */
+    object-fit: cover;
+    border-radius: 5px; /* Radius gambar */
   }
 
-  /* Padding konten dalam artikel di responsif */
   .artikel-item h3 {
-    font-size: 14px;
-    margin: 5px 0 8px; /* Hapus padding dari sini, gunakan padding di artikel-content */
+    font-size: 15px;
+    margin: 5px 10px 8px;
   }
 
   .artikel-item p {
     font-size: 13px;
-    margin: 0 0 10px; /* Hapus padding dari sini */
+    margin: 0 10px 10px;
   }
 
   .read-more {
-    font-size: 13px;
-    margin: 0 0 0; /* Hapus padding dari sini */
-    display: block; /* Agar mengambil baris sendiri */
+    margin: 0 10px 12px;
+    display: inline-block;
   }
 
   .meta {
-    font-size: 12px;
-    margin: 10px 0;
-    gap: 10px;
-    padding: 0; /* Hapus padding dari sini */
-  }
-
-  .artikel-item a {
-    padding: 0;
-  }
-
-  .artikel-content {
-    padding: 15px 0; /* Beri padding vertikal di sini, padding horizontal akan ditambahkan ke item */
-  }
-  /* Karena ada border di artikel-item, tambahkan padding horizontal ke content */
-  .artikel-item .meta,
-  .artikel-item h3,
-  .artikel-item p,
-  .artikel-item .read-more {
-      padding-left: 15px;
-      padding-right: 15px;
-  }
-  .artikel-item img {
-      margin-bottom: 15px; /* Jarak antara gambar dan konten */
-  }
-
-  .artikel-list::-webkit-scrollbar {
-    display: none;
+    padding: 0 10px;
   }
 
   .konten-kanan {
-    display: none;
+    display: none; /* Iklan hilang di sini */
   }
-}
 
-@media (max-width: 1024px) {
+  /* Aturan untuk mobile-ad-section di tablet/mobile */
   .mobile-ad-section {
     display: block;
     margin: 20px auto;
@@ -1016,7 +1006,110 @@
   }
 }
 
-@media (min-width: 1025px) { /* Desktop */
+/* === Media Query untuk ukuran mendekati HP (Tetap 3 Horizontal, tapi lebih rapat) === */
+@media (max-width: 768px) {
+  .artikel-list {
+    gap: 16px; /* Kurangi gap agar lebih rapat */
+  }
+
+  .artikel-item {
+    flex: 1 1 calc(
+      33.333% - 10.66px
+    ); /* Sesuaikan flex-basis dengan gap baru */
+    max-width: calc(33.333% - 10.66px);
+    margin-bottom: 16px; /* Kurangi margin-bottom */
+  }
+  .artikel-item img {
+    height: 150px; /* Sedikit kecilkan gambar */
+  }
+}
+
+/* === Media Query untuk Tampilan HP (3 Artikel Vertikal dengan Garis dan Jarak) === */
+@media (max-width: 600px) {
+  /* Perjelas garis pembungkus seluruh container artikel di HP */
+  .section-bulughul {
+    padding: 15px; /* Mengurangi padding dari tepi website (atas/bawah/kiri/kanan) */
+    max-width: calc(100% - 30px); /* Menyesuaikan lebar agar ada padding 15px kiri kanan */
+    border: 2px solid #a4508b; /* Garis ungu crystal pekat */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow yang lebih jelas */
+    border-radius: 8px; /* Sudut sedikit membulat */
+  }
+
+  .artikel-list {
+    flex-direction: column; /* Ubah menjadi kolom */
+    gap: 0; /* Hapus gap di sini, jarak diatur oleh margin artikel */
+  }
+
+  .artikel-item {
+    flex: 0 0 100%; /* Setiap artikel mengambil 100% lebar */
+    max-width: 100%;
+    margin-bottom: 20px; /* Jarak bawah antar artikel */
+    background-color: #fff; /* Tambah ini agar latar belakang putih */
+    border-radius: 6px; /* Pertahankan border-radius untuk artikel */
+    overflow: hidden;
+    border: 1px solid #e0e0e0; /* Border untuk setiap artikel */
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05); /* Sedikit shadow untuk setiap artikel */
+  }
+
+  .artikel-item:last-child {
+    margin-bottom: 0; /* Hapus margin bawah untuk artikel terakhir */
+  }
+
+  .artikel-item img {
+    width: 100%;
+    height: auto; /* Biarkan tinggi gambar menyesuaikan rasio */
+    aspect-ratio: 16 / 9; /* Pertahankan rasio 16:9 */
+    border-radius: 6px 6px 0 0; /* Radius hanya di bagian atas gambar */
+    margin-bottom: 15px; /* Jarak antara gambar dan konten */
+  }
+
+  /* Pembungkus (wrapper) untuk padding horizontal konten dalam artikel */
+  /* Pastikan Anda sudah menambahkan <div class="read-more-wrapper"> di HTML Anda */
+  .artikel-item .meta,
+  .artikel-item h3,
+  .artikel-item p,
+  .artikel-item .read-more-wrapper {
+    padding-left: 15px; /* Jarak dari kiri */
+    padding-right: 15px; /* Jarak dari kanan */
+  }
+
+  .artikel-item h3 {
+    font-size: 16px; /* Sedikit besarkan ukuran font judul artikel */
+    margin-top: 0; /* Reset margin-top karena sudah ada margin-bottom di img */
+    margin-bottom: 8px; /* Jarak ke paragraf */
+    color: #222; /* Pastikan warna default tetap hitam di mobile */
+  }
+
+  .artikel-item p {
+    font-size: 14px; /* Sedikit besarkan ukuran font paragraf */
+    margin-bottom: 15px; /* Tambah jarak ke tombol baca selengkapnya */
+  }
+
+  .read-more {
+    font-size: 14px;
+    display: inline-block; /* Kembali ke inline-block untuk box */
+    padding: 10px 20px; /* Perbesar padding untuk box */
+    background-color: #a4508b; /* Latar belakang ungu crystal pekat */
+    color: #fff; /* Teks putih */
+    border: 1px solid #a4508b; /* Garis ungu crystal */
+    border-radius: 4px;
+    text-align: center;
+    /* Remove margin-left/right: 0 to let wrapper padding handle it */
+    /* width: fit-content; */ /* Hapus ini agar tombol bisa di-center atau mengambil lebar penuh jika perlu */
+    max-width: 100%; /* Batasi lebar agar tidak overflow jika teks panjang */
+    display: block; /* Agar bisa di-center */
+    margin: 0 auto 15px; /* Centerkan tombol dan beri jarak bawah */
+  }
+
+  .meta {
+    font-size: 13px;
+    margin-top: 0; /* Reset margin-top jika sudah ada dari atas */
+    margin-bottom: 10px; /* Jarak ke judul */
+  }
+}
+
+/* === Media Query untuk Desktop (1025px ke atas) === */
+@media (min-width: 1025px) {
   .konten-kanan {
     display: block;
     position: relative;
@@ -1030,12 +1123,10 @@
 
 
 
-
-
 /* Wrapper khusus untuk konten artikel 4 */
 .artikel-empat-wrapper {
   max-width: 1300px;
-  margin:20px auto;
+  margin: 20px auto;
   padding: 0 23px;
   display: flex;
   justify-content: space-between;
@@ -1070,7 +1161,6 @@
 .artikel-empat-card {
   overflow: hidden;
   transition: transform 0.2s ease;
-
 }
 
 .artikel-empat-card img {
@@ -1183,7 +1273,6 @@
     font-size: 13px;
   }
 }
-
 
 
 .section-artikel5 {
@@ -1386,6 +1475,7 @@
         min-width: auto;
         max-width: 100%;
         padding: 20px;
+        
     }
     
     .artikel5-item {
