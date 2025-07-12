@@ -1,111 +1,328 @@
+
+
 /* Reset dan dasar */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', sans-serif; transition: background 0.3s, color 0.3s; overflow-x: hidden; }
-    body.dark { background: #1a1a1a; color: #ffffff; }
-    a { text-decoration: none; color: inherit; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    /* Header gambar */
-    .header-images {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-    }
-    .logo-header { height: 60px; }
-    .iklan { height: 60px; max-width: 80%; object-fit: cover; }
+body {
+  font-family: 'Segoe UI', sans-serif;
+  transition: background 0.3s, color 0.3s;
+  overflow-x: hidden; /* Mencegah scrollbar horizontal yang tidak diinginkan */
+}
 
-    /* Navbar */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #fff;
-      padding: 10px 20px;
-      border-top: 1px solid #ddd;
-      border-bottom: 1px solid #ddd;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    body.dark .navbar { background: #222; border-color: #333; }
+/* Untuk mencegah scroll body saat mobile nav aktif */
+body.no-scroll {
+  overflow: hidden;
+}
 
-    .nav-links {
-      display: flex;
-      list-style: none;
-      gap: 15px;
-    }
-    .nav-links li a {
-      font-weight: 500;
-      padding: 8px 12px;
-      display: block;
-    }
+body.dark {
+  background: #1a1a1a;
+  color: #ffffff;
+}
 
-    /* Hamburger */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-    }
-    .hamburger div {
-      width: 25px;
-      height: 3px;
-      background: #333;
-    }
-    body.dark .hamburger div { background: #eee; }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
-    /* Toggle button */
-    .toggle-button {
-      border: none;
-      background: none;
-      cursor: pointer;
-    }
-    .toggle-button .moon::before {
-      content: '\f186';
-      font-family: 'Font Awesome 6 Free';
-      font-weight: 900;
-    }
-    .toggle-button .sun::before {
-      content: '\f185';
-      font-family: 'Font Awesome 6 Free';
-      font-weight: 900;
-      display: none;
-    }
-    body.dark .toggle-button .moon::before { display: none; }
-    body.dark .toggle-button .sun::before { display: inline; }
+/* Header gambar - Pertahankan jika Anda memilikinya di HTML Anda */
+.header-images {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
 
-    /* Responsive menu */
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: #fff;
-      z-index: 2000;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-      font-size: 1.2rem;
-      overflow: hidden;
-    }
-    body.dark .mobile-nav { background: #111; }
+.logo-header {
+  height: 60px;
+}
 
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-    }
+.iklan {
+  height: 60px;
+  max-width: 80%;
+  object-fit: cover;
+}
 
-    @media (min-width: 769px) {
-      .mobile-nav { display: none !important; }
-    }
+/* Navbar Anda yang sudah ada (untuk desktop) */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 10px 20px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+body.dark .navbar {
+  background: #222;
+  border-color: #333;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 15px;
+}
+
+.nav-links li a {
+  font-weight: 500;
+  padding: 8px 12px;
+  display: block;
+  transition: color 0.3s ease; /* Transisi untuk hover */
+}
+
+/* Efek hover untuk link navbar desktop */
+.nav-links li a:hover {
+  color: #007bff; /* Contoh warna hover */
+}
+body.dark .nav-links li a:hover {
+  color: #6ab04c; /* Contoh warna hover di dark mode */
+}
 
 
+.nav-links .home-btn a {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Jarak antara ikon dan teks Home */
+}
+
+/* Hamburger Icon (untuk mobile) */
+.hamburger {
+  display: none; /* Default hidden on desktop */
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 5px; /* Tambahkan padding agar mudah diklik */
+  z-index: 1001; /* Pastikan di atas elemen lain di navbar utama */
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background: #333;
+  transition: all 0.3s ease; /* Transisi untuk animasi X */
+  border-radius: 2px; /* Sedikit melengkung */
+}
+
+body.dark .hamburger div {
+  background: #eee;
+}
+
+/* Dark Mode Toggle Button */
+.toggle-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 20px; /* Ukuran ikon toggle */
+  color: #333; /* Warna default */
+  transition: color 0.3s ease;
+  padding: 5px; /* Tambahkan padding agar mudah diklik */
+}
+
+body.dark .toggle-button {
+  color: #eee;
+}
+
+.toggle-button .moon::before {
+  content: '\f186'; /* Font Awesome Moon icon */
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900; /* Untuk ikon solid */
+}
+
+.toggle-button .sun::before {
+  content: '\f185'; /* Font Awesome Sun icon */
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900; /* Untuk ikon solid */
+  display: none; /* Sembunyikan secara default */
+}
+
+body.dark .toggle-button .moon::before {
+  display: none; /* Sembunyikan bulan di dark mode */
+}
+
+body.dark .toggle-button .sun::before {
+  display: inline; /* Tampilkan matahari di dark mode */
+}
+
+
+/* ---------------------------------------------------- */
+/* Mulai: Gaya untuk Mobile Navigation Menu (Baru/Modifikasi) */
+/* ---------------------------------------------------- */
+
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: 0; /* Mulai dari kanan layar */
+  bottom: 0;
+  width: 100%; /* Lebar penuh layar */
+  height: 100%; /* Tinggi penuh layar */
+  /* Gradien warna persis seperti gambar Anda */
+  background: linear-gradient(
+    to bottom,
+    #3c51b9 0%, /* Biru gelap */
+    #2196f3 50%, /* Biru sedang */
+    #f44336 100% /* Merah */
+  );
+  z-index: 2000; /* Pastikan di atas semua konten lain */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Pusatkan elemen secara horizontal */
+  justify-content: flex-start; /* Posisikan konten dari atas */
+  color: #fff; /* Warna teks putih untuk semua elemen di dalam menu */
+  transform: translateX(100%); /* Sembunyikan menu di luar layar ke kanan */
+  transition: transform 0.4s ease-out; /* Animasi geser yang mulus */
+  overflow-y: auto; /* Aktifkan scroll vertikal jika konten melebihi tinggi layar */
+  padding: 20px; /* Padding umum untuk konten di dalam menu */
+}
+
+.mobile-nav.is-active {
+  transform: translateX(0); /* Tampilkan menu dengan menggesernya ke posisi awal */
+}
+
+/* Tombol Tutup (X) di pojok kanan atas menu mobile */
+.mobile-nav-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 2010; /* Pastikan di atas search bar */
+}
+
+/* Search Bar di dalam menu mobile */
+.mobile-search-bar {
+  width: 90%; /* Lebar search bar relatif terhadap mobile-nav */
+  max-width: 400px; /* Batasi lebar maksimum */
+  margin-top: 60px; /* Jarak dari atas (di bawah tombol close) */
+  position: relative;
+  border-radius: 50px; /* Membuat sudut melengkung */
+  overflow: hidden; /* Penting untuk menjaga input di dalam border-radius */
+  background-color: rgba(255, 255, 255, 0.2); /* Latar belakang transparan putih */
+  display: flex; /* Untuk menata ikon dan input */
+  align-items: center; /* Pusatkan vertikal ikon dan input */
+}
+
+.mobile-search-bar input {
+  flex-grow: 1; /* Input mengambil sisa ruang yang tersedia */
+  padding: 15px 20px;
+  border: none;
+  background: transparent; /* Latar belakang input transparan */
+  color: #fff; /* Warna teks input putih */
+  font-size: 1rem;
+  outline: none; /* Hilangkan outline saat input fokus */
+}
+
+.mobile-search-bar input::placeholder {
+  color: rgba(255, 255, 255, 0.7); /* Warna placeholder sedikit transparan */
+}
+
+.mobile-search-bar .search-icon {
+  padding: 0 20px; /* Padding di sekitar ikon search */
+  color: #fff; /* Warna ikon search putih */
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Daftar Link Navigasi Mobile */
+.mobile-nav-links {
+  list-style: none;
+  width: 90%; /* Lebar daftar link relatif terhadap mobile-nav */
+  max-width: 400px; /* Batasi lebar maksimum */
+  margin-top: 30px; /* Jarak dari search bar */
+  text-align: left; /* Teks rata kiri */
+}
+
+.mobile-nav-links li {
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Garis pemisah putih transparan */
+}
+
+.mobile-nav-links li:last-child {
+  border-bottom: none; /* Hapus garis di item terakhir */
+}
+
+.mobile-nav-links li a {
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: space-between; /* Untuk menempatkan panah dropdown di kanan */
+  align-items: center;
+  color: #fff; /* Warna teks putih */
+  padding-left: 10px; /* Sedikit indentasi untuk link */
+  width: 100%; /* Agar area klik mencakup seluruh lebar */
+}
+
+.mobile-nav-links li a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Efek hover ringan */
+    border-radius: 5px;
+}
+
+.mobile-nav-links li a .dropdown-arrow {
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+}
+
+/* Ikon Media Sosial di bagian bawah menu mobile */
+.mobile-social-icons {
+  display: flex;
+  justify-content: center; /* Pusatkan ikon secara horizontal */
+  gap: 30px; /* Jarak antar ikon */
+  margin-top: auto; /* Dorong elemen ini ke bagian paling bawah dari mobile-nav */
+  padding-bottom: 30px; /* Jarak dari bawah layar */
+  width: 100%; /* Agar justify-content: center berfungsi dengan baik */
+}
+
+.mobile-social-icons a {
+  color: #fff; /* Warna ikon putih */
+  font-size: 28px;
+  transition: transform 0.2s ease-in-out; /* Animasi saat hover */
+}
+
+.mobile-social-icons a:hover {
+  transform: scale(1.1); /* Sedikit membesar saat hover */
+}
+
+/* ---------------------------------------------------- */
+/* Akhir: Gaya untuk Mobile Navigation Menu */
+/* ---------------------------------------------------- */
+
+
+/* Media Queries untuk Responsivitas */
+@media (max-width: 768px) {
+  /* Sembunyikan link navigasi desktop */
+  .nav-links {
+    display: none;
+  }
+
+  /* Tampilkan ikon hamburger di layar kecil */
+  .hamburger {
+    display: flex;
+  }
+
+  /* Sesuaikan posisi mode toggle jika perlu di mobile */
+  /* Misal: .navbar .toggle-button { order: 3; } */
+}
+
+/* Media Query untuk memastikan mobile nav tidak tampil di desktop */
+@media (min-width: 769px) {
+  .mobile-nav {
+    display: none !important; /* Penting! Selalu sembunyikan di desktop */
+  }
+}
 
 
 
 
+    
 
 
 
